@@ -10,24 +10,14 @@ import MenuIcon from '@material-ui/core/Menu';
 import Paper from '@material-ui/core/Paper';
 import {MDCRipple} from '@material/ripple';
 import { Link } from "react-router-dom";
-import onlineclass from './onlineclass.jpg';
+import NavBar from "./NavBar";
 
-function SignUp() {
+function LearnMore() {
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-    textAlign: 'left',   
-  },
-  toolbar:{
-      backgroundColor: 'grey',
-  },
+    root: {
+        flexGrow: 1,
+    },
     paper: {
         backgroundColor:'grey',
         display: 'flex',
@@ -37,7 +27,6 @@ const useStyles = makeStyles((theme) => ({
         color:'white',
         
     },
-    
     footer:{
         textAlign:'center',
         height: 75,
@@ -51,25 +40,13 @@ const useStyles = makeStyles((theme) => ({
   
 }));
 
-
-  
 const classes = useStyles();
+
     return (
     <div className="Login">
-        <AppBar position="static" elevation={10}>
-            <Toolbar className={classes.toolbar}>
-                <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-                    <MenuIcon />
-                </IconButton>
-                <Typography variant="h3" className={classes.title}>
-                    <Link to="/App">MATTS</Link>
-                </Typography>
-                <Link to="/Login"><Button color="inherit">Login</Button></Link>
-                
-            </Toolbar>
-        </AppBar>
+        <NavBar />
         
-       Sign Up Page
+       Learn More Page
         
     </div>
     
@@ -77,4 +54,4 @@ const classes = useStyles();
 
 }
 
-export default SignUp;
+export default LearnMore;
