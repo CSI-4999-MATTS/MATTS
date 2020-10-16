@@ -60,7 +60,7 @@ const classes = useStyles();
             <div class="mdc-touch-target-wrapper">
                 <button class="mdc-button mdc-button--touch">
                     <div class="mdc-button__ripple"></div>
-                    <Link to="/SignUp"><span class="mdc-button__label">Sign Up</span></Link>
+                    <Link to="/Login"><span class="mdc-button__label">Create An Account</span></Link>
                     <div class="mdc-button__touch"></div>
                 </button>
             </div>
