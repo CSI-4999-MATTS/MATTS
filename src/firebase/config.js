@@ -1,6 +1,6 @@
 import * as firebase from "firebase";
 
-export const firebaseApp = firebase.initializeApp({
+const firebaseApp = {
     apiKey: process.env.REACT_APP_FRBS_API_KEY,
     authDomain: process.env.REACT_APP_FRBS_AUTH_DOM,
     databaseURL: process.env.REACT_APP_FRBS_DB_URL,
@@ -9,4 +9,6 @@ export const firebaseApp = firebase.initializeApp({
     messagingSenderId: process.env.REACT_APP_FRBS_MESS_ID,
     appId: process.env.REACT_APP_FRBS_APP_ID,
     measurementId: process.env.REACT_APP_FRBS_MEAS_ID
-});
+};
+
+export default firebase.initializeApp(firebaseApp);

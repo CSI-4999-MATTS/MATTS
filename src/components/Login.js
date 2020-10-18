@@ -1,12 +1,13 @@
 import React from 'react';
 import '../stylesheets/App.css';
+import firebase from 'firebase';
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import { makeStyles } from '@material-ui/core/styles';
 import NavBar from './NavBar';
 import * as firebaseui from 'firebaseui';
-import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
-import firebase from 'firebase';
+import firebaseApp from '../firebase/config.js';
 
-const uiConfig = {
+var uiConfig = {
     // Popup signin flow rather than redirect flow.
     signInFlow: 'popup',
     // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
@@ -17,46 +18,15 @@ const uiConfig = {
     ]
   };
 
+var ui = new firebaseui.auth.AuthUI(firebaseApp.auth());
+
+// Check to see if pending redirect from Auth0 provider - i.e. Google
+if (ui.isPendingRedirect()){
+  ui.start('#firebaseui-auth-container', uiConfig);
+}
+
+
 function Login() {
-
-    // Don't need this atm
-// const useStyles = makeStyles((theme) => ({
-//   root: {
-//     flexGrow: 1,
-//   },
-//   menuButton: {
-//     marginRight: theme.spacing(2),
-//   },
-//   title: {
-//     flexGrow: 1,
-//     textAlign: 'left',   
-//   },
-//   toolbar:{
-//       backgroundColor: 'grey',
-//   },
-//     paper: {
-//         backgroundColor:'grey',
-//         display: 'flex',
-//         margin: 50,
-//         width: 'native',
-//         height: 300,
-//         color:'white',
-        
-//     },
-    
-//     footer:{
-//         textAlign:'center',
-//         height: 75,
-//         opacity: .3,
-//         fontSize: 10,
-//         position: 'absolute',
-//         bottom: 0,
-//         display: 'block',
-//         width: '100%',
-//     },
-// }));
-
-//const classes = useStyles();
 
     return (
     <div className="Login">
@@ -64,7 +34,7 @@ function Login() {
         
         Login Page
        
-        <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()}/>
+        <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebaseApp.auth()}/>
 
     </div>
     
