@@ -1,79 +1,180 @@
 import React from 'react';
-import '../stylesheets/App.css';
 import { makeStyles } from '@material-ui/core/styles';
-import { Paper} from '@material-ui/core';
-import {MDCRipple} from '@material/ripple';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/core/Menu';
 import { Link } from "react-router-dom";
-import NavBar from './NavBar';
-// import onlineclass from './onlineclass.jpg';
+import onlineclass from './onlineclass.jpg';
+import onlineclass2 from './onlineclass2.jpg';
+import Container from '@material-ui/core/Container';
+import Image from 'react-image-resizer';
 
+//test comment
 function App() {
 
+      
 const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1,
-    },
-    paper: {
-        backgroundColor:'grey',
-        display: 'flex',
-        margin: 50,
-        width: 'native',
-        height: 300,
-        color:'white',
+    
+    app:{
+        backgroundColor: "#EEEEEE",
         
     },
+    
+    menuButton: {
+        marginRight: theme.spacing(1),
+        color: "#32E0C4",
+        '&:hover':{
+            backgroundColor: "#32E0C4",
+            color: "#0D7377",
+            },
+
+    },
+    
+    title: {
+        flexGrow: 1,
+        textAlign: 'left',
+
+    },
+    
+    toolbar:{
+        backgroundColor: "#0D7377",
+    },
+
     footer:{
         textAlign:'center',
         height: 75,
         opacity: .3,
         fontSize: 10,
-        position: 'absolute',
+        marginTop: 150,
         bottom: 0,
         display: 'block',
         width: '100%',
+        
     },
+    
+    link:{
+        color:"#32E0C4",
+        textDecoration: 'none',
+        
+    },
+    
+    photo:{
+        position: 'relative',
+        marginTop: 75,
+        width: '70%',
+        marginLeft: '15%',
+        marginRight: '15%',
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10,
+        border: '2px solid #0D7377',
+    },
+    
+    sitefont:{
+        color: "#0D7377",
+        textAlign: 'center',
+        padding: 5,
+    
+    },
+    
+    buttonlinks:{
+        color:"#32E0C4",
+        textDecoration: 'none', 
+        
+    },
+    
+    buttons: {
+        backgroundColor: "#0D7377",
+        borderRadius: 5,
+        paddingTop: 10,
+        paddingBottom: 10,
+        paddingLeft: 8,
+        paddingRight: 8,
+        border: 0,
+        marginLeft: '45%',
+        marginTop: 5,
+        marginBottom: 10,
+    },
+    
+    border: {
+        border: '2px solid #0D7377',
+        borderBottomLeftRadius: 10,
+        borderBottomRightRadius: 10,
+        width: '70%',
+        marginLeft: '15%',
+        marginRight: '15%',
+    },
+    
 }));
 
 const classes = useStyles();
-
     return (
-    <div className="App">
-
-        <NavBar />
-
-        <Paper className={classes.paper} elevation={10}>
-        
-        <div>MATTS is designed to teach you the web development skills you need by learning what you already know. We have gathered resources all across the web to teach what you really need to know so you don’t have to. You’ll choose what skills you want to know, and we’ll give you the resources to learn them.
+    
+    <div className={classes.app}>
+        <AppBar position="static" elevation={3}>
+            <Toolbar className={classes.toolbar}>
+                <IconButton edge="start" className={classes.menuButton} aria-label="menu"></IconButton>
+                    <Typography variant="h3" className={classes.title}>
+                        <Link to="/App" className={classes.link}>Delve</Link>
+                    </Typography>
+                <Link to="/SignUp" className={classes.link}><Button className={classes.menuButton}>Sign up</Button></Link>
+                <Link to="/Login" className={classes.link}><Button className={classes.menuButton}>Login</Button></Link>
+            </Toolbar>
+        </AppBar>
+    
+   
+        <div>
+            <img className={classes.photo} src={onlineclass} />
         </div>
-        <div class="mdc-touch-target-wrapper">
-            <button class="mdc-button mdc-button--touch">
+        
+        <div className={classes.border}>    
+        
+        <div className={classes.sitefont}>
+            Delve is designed to teach you the web development skills you need by learning what you already know. We have gathered resources all across the web to teach what you really need to know so you don’t have to. You’ll choose what skills you want to know, and we’ll give you the resources to learn them.
+        </div>
+        
+        
+        <div>
+            <button class="mdc-button mdc-button--touch" className={classes.buttons}>
                 <div class="mdc-button__ripple"></div>
-                <Link to="/LearnMore"><span class="mdc-button__label">Learn More</span></Link>
+                    <Link to="/LearnMore" className={classes.buttonlinks}><span class="mdc-button__label">Learn More</span></Link>
+                <div class="mdc-button__touch"></div>
+            </button>
+            
+        </div>
+        </div>
+        <div>
+            <img className={classes.photo} src={onlineclass2} />
+        </div>
+   
+        <div className={classes.border}>
+            
+        <div className={classes.sitefont}>        
+            The path to gaining technical skills starts here. Take your first step to learning web development.
+        </div>
+        
+        
+        <div class="mdc-touch-target-wrapper">
+            <button class="mdc-button mdc-button--touch" className={classes.buttons}>
+                <div class="mdc-button__ripple"></div>
+                <Link to="/SignUp" className={classes.buttonlinks}><span class="mdc-button__label">Sign Up</span></Link>
                 <div class="mdc-button__touch"></div>
             </button>
         </div>
-        </Paper>
+        
+        </div>
         
         
-        <Paper className={classes.paper} elevation={10}>
-            The path to gaining technical skills starts here. Take your first step to learning web development.
-            <div class="mdc-touch-target-wrapper">
-                <button class="mdc-button mdc-button--touch">
-                    <div class="mdc-button__ripple"></div>
-                    <Link to="/Login"><span class="mdc-button__label">Create An Account</span></Link>
-                    <div class="mdc-button__touch"></div>
-                </button>
-            </div>
-        </Paper>
-        
-        
-        <Paper className={classes.footer} elevation={0}>
+        <div className={classes.footer}>
             Copyright: Allison Broski, Shelby McKay, Maurice Fuentes, Timothy Carpenter, Tanner Porteous
             <p>Oakland University</p>
-        </Paper>
-
+        
+        </div>
+       
+   
     </div>
-    
     );
 
 }
