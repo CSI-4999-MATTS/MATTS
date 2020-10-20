@@ -1,5 +1,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Updating the Project
+When pulling new code, be sure to run `npm install`. This will install any node packages you may be missing that are required for development.
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -11,6 +14,9 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
+
+To add firebase functionality, run this command first, followed by `firebase serve`
+This does require the addition of the Firebase CLI, which you can install [here](https://firebase.google.com/docs/cli). 
 
 ### `npm test`
 
