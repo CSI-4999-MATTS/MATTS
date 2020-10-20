@@ -7,6 +7,66 @@ import NavBar from './NavBar';
 import * as firebaseui from 'firebaseui';
 import firebaseApp from '../firebase/config.js';
 
+
+function Login() {
+
+const useStyles = makeStyles((theme) => ({
+    
+    app:{
+        backgroundColor: "#EEEEEE",
+        
+    },
+
+    footer:{
+        textAlign:'center',
+        height: 75,
+        opacity: .3,
+        fontSize: 10,
+        marginTop: 350,
+        bottom: 0,
+        display: 'block',
+        width: '100%',
+        
+    },
+    
+    
+    sitefont:{
+        color: "#0D7377",
+        textAlign: 'center',
+        padding: 5,
+        marginTop: 200,
+    
+    },
+
+    
+    signinlink: {
+        border: '2px solid #0D7377',  
+        width: '40%',
+        marginLeft: '30%',
+        marginRight: '30%',
+        borderRadius: 10,
+        backgroundColor: "#0D7377",
+        marginTop: 200,
+        
+    },
+    
+    googlelink: {
+        marginTop: 60,
+        marginBottom: 60,
+        
+    },
+    
+    header: {
+        textAlign: "center",
+        color: "#32E0C4",
+        fontSize: 50,
+    }
+    
+}));
+
+
+
+
 var uiConfig = {
     // Popup signin flow rather than redirect flow.
     signInFlow: 'popup',
@@ -27,15 +87,27 @@ if (ui.isPendingRedirect()){
 }
 
 
-function Login() {
 
+const classes = useStyles();
     return (
-    <div className="Login">
+    <div className={classes.app}>
         <NavBar />
         
-        Login Page
-       
-        <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebaseApp.auth()}/>
+        <div className={classes.signinlink}> 
+                <h1 className={classes.header}>Login</h1>
+        
+          
+        
+            <StyledFirebaseAuth className={classes.googlelink} uiConfig={uiConfig} firebaseAuth={firebaseApp.auth()}/>
+        
+
+        </div>
+
+        <div className={classes.footer}>
+            Copyright: Allison Broski, Shelby McKay, Maurice Fuentes, Timothy Carpenter, Tanner Porteous
+            <p>Oakland University</p>
+        
+        </div>
 
     </div>
     
