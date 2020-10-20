@@ -6,11 +6,16 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/core/Menu';
-import { Link } from "react-router-dom";
 import onlineclass from './onlineclass.jpg';
 import onlineclass2 from './onlineclass2.jpg';
 import Container from '@material-ui/core/Container';
 import Image from 'react-image-resizer';
+import { Paper} from '@material-ui/core';
+import {MDCRipple} from '@material/ripple';
+import { Link, Route } from "react-router-dom";
+import NavBar from './NavBar';
+import { RouterSharp } from '@material-ui/icons';
+// import onlineclass from './onlineclass.jpg';
 
 //test comment
 function App() {
