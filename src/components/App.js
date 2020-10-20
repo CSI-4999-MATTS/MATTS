@@ -1,21 +1,10 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/core/Menu';
 import onlineclass from './onlineclass.jpg';
 import onlineclass2 from './onlineclass2.jpg';
-import Container from '@material-ui/core/Container';
-import Image from 'react-image-resizer';
-import { Paper} from '@material-ui/core';
-import {MDCRipple} from '@material/ripple';
-import { Link, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import NavBar from './NavBar';
-import { RouterSharp } from '@material-ui/icons';
-// import onlineclass from './onlineclass.jpg';
+
 
 //test comment
 function App() {
@@ -27,26 +16,6 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: "#EEEEEE",
         
     },
-    
-    menuButton: {
-        marginRight: theme.spacing(1),
-        color: "#32E0C4",
-        '&:hover':{
-            backgroundColor: "#32E0C4",
-            color: "#0D7377",
-            },
-
-    },
-    
-    title: {
-        flexGrow: 1,
-        textAlign: 'left',
-
-    },
-    
-    toolbar:{
-        backgroundColor: "#0D7377",
-    },
 
     footer:{
         textAlign:'center',
@@ -57,12 +26,6 @@ const useStyles = makeStyles((theme) => ({
         bottom: 0,
         display: 'block',
         width: '100%',
-        
-    },
-    
-    link:{
-        color:"#32E0C4",
-        textDecoration: 'none',
         
     },
     
@@ -118,17 +81,8 @@ const classes = useStyles();
     return (
     
     <div className={classes.app}>
-        <AppBar position="static" elevation={3}>
-            <Toolbar className={classes.toolbar}>
-                <IconButton edge="start" className={classes.menuButton} aria-label="menu"></IconButton>
-                    <Typography variant="h3" className={classes.title}>
-                        <Link to="/App" className={classes.link}>Delve</Link>
-                    </Typography>
-                <Link to="/SignUp" className={classes.link}><Button className={classes.menuButton}>Sign up</Button></Link>
-                <Link to="/Login" className={classes.link}><Button className={classes.menuButton}>Login</Button></Link>
-            </Toolbar>
-        </AppBar>
-    
+
+        <NavBar />
    
         <div>
             <img className={classes.photo} src={onlineclass} />

@@ -7,34 +7,40 @@ import { Link } from "react-router-dom";
 function NavBar () {
 
     const useStyles = makeStyles((theme) => ({
-        root: {
-          flexGrow: 1,
+      root: {
+        flexGrow: 1,
+      },
+      menuButton: {
+        marginRight: theme.spacing(1),
+        color: "#32E0C4",
+        "&:hover": {
+          backgroundColor: "#32E0C4",
+          color: "#0D7377",
         },
-        menuButton: {
-          marginRight: theme.spacing(2),
-        },
-        title: {
-          flexGrow: 1,
-          textAlign: 'left',   
-        },
-        toolbar:{
-            backgroundColor: 'grey',
-        },
-        
-      }));
+      },
+      title: {
+        flexGrow: 1,
+        textAlign: "left",
+      },
+      toolbar: {
+        backgroundColor: "#0D7377",
+      },
+      link: {
+        color: "#32E0C4",
+        textDecoration: "none",
+      },
+    }));
 
       const classes = useStyles();
 
       return (
-        <AppBar position="static" elevation={10}>
+        <AppBar position="static" elevation={3}>
             <Toolbar className={classes.toolbar}>
-                <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-                    <MenuIcon />
-                </IconButton>
-                <Typography variant="h3" className={classes.title}>
-                    <Link to="/App">MATTS</Link>
-                </Typography>
-                <Link to="/Login"><Button color="inherit">Login</Button></Link>
+                <IconButton edge="start" className={classes.menuButton} aria-label="menu"></IconButton>
+                    <Typography variant="h3" className={classes.title}>
+                        <Link to="/App" className={classes.link}>Delve</Link>
+                    </Typography>
+                <Link to="/Login" className={classes.link}><Button className={classes.menuButton}>Login</Button></Link>
             </Toolbar>
         </AppBar>
       )
