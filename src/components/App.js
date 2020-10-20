@@ -3,8 +3,9 @@ import '../stylesheets/App.css';
 import { makeStyles } from '@material-ui/core/styles';
 import { Paper} from '@material-ui/core';
 import {MDCRipple} from '@material/ripple';
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import NavBar from './NavBar';
+import { RouterSharp } from '@material-ui/icons';
 // import onlineclass from './onlineclass.jpg';
 
 function App() {
