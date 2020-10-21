@@ -118,7 +118,7 @@ const classes = useStyles();
         <div class="mdc-touch-target-wrapper">
             <button class="mdc-button mdc-button--touch" className={classes.buttons}>
                 <div class="mdc-button__ripple"></div>
-                <Link to="/SignUp" className={classes.buttonlinks}><span class="mdc-button__label">Sign Up</span></Link>
+                <Link to="/Login" className={classes.buttonlinks}><span class="mdc-button__label">Sign Up</span></Link>
                 <div class="mdc-button__touch"></div>
             </button>
         </div>

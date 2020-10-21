@@ -51,16 +51,22 @@ const useStyles = makeStyles((theme) => ({
     },
     
     googlelink: {
-        marginTop: 60,
-        marginBottom: 60,
+        marginTop: 40,
+        marginBottom: 40,
         
     },
     
     header: {
         textAlign: "center",
-        color: "#32E0C4",
+        color: "white",
         fontSize: 50,
-    }
+    },
+    
+    text: {
+        fontSize: 15,
+        textAlign: "center",
+        color: "#32E0C4",
+    },
     
 }));
 
@@ -96,7 +102,7 @@ const classes = useStyles();
         <div className={classes.signinlink}> 
                 <h1 className={classes.header}>Login</h1>
         
-          
+                <p className={classes.text}> Sign-up and login are simple! Just login using a valid Gmail account and get started right away!</p>  
         
             <StyledFirebaseAuth className={classes.googlelink} uiConfig={uiConfig} firebaseAuth={firebaseApp.auth()}/>
         
