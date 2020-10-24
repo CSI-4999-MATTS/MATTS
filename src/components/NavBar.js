@@ -3,6 +3,7 @@ import {makeStyles} from '@material-ui/core';
 import {AppBar, Toolbar, IconButton, Typography, Button} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from "react-router-dom";
+import delve from './Delve.png';
 
 function NavBar () {
 
@@ -11,7 +12,7 @@ function NavBar () {
         flexGrow: 1,
       },
       menuButton: {
-        marginRight: theme.spacing(1),
+        marginRight: theme.spacing(5),
         color: "#32E0C4",
         "&:hover": {
           backgroundColor: "#32E0C4",
@@ -20,15 +21,22 @@ function NavBar () {
       },
       title: {
         flexGrow: 1,
-        textAlign: "left",
+        textAlign: "center",
       },
       toolbar: {
         backgroundColor: "#0D7377",
+        height: 25,
+        width: "100%"
       },
       link: {
         color: "#32E0C4",
         textDecoration: "none",
       },
+        
+        delvelogo:{
+            width: 350,  
+            marginTop: 75,
+        },
     }));
 
       const classes = useStyles();
@@ -38,7 +46,7 @@ function NavBar () {
             <Toolbar className={classes.toolbar}>
                 <IconButton edge="start" className={classes.menuButton} aria-label="menu"></IconButton>
                     <Typography variant="h3" className={classes.title}>
-                        <Link to="/App" className={classes.link}>Delve</Link>
+                        <Link to="/App" className={classes.link}><img className={classes.delvelogo} src={delve} /></Link>
                     </Typography>
                 <Link to="/Login" className={classes.link}><Button className={classes.menuButton}>Login</Button></Link>
             </Toolbar>
