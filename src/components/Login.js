@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     
     app:{
         backgroundColor: "#EEEEEE",
-        
+        width: "101%",
     },
 
     footer:{
