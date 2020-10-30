@@ -1,4 +1,5 @@
 import * as firebase from "firebase";
+import * as admin from "firebase-admin";
 
 const firebaseApp = {
     apiKey: process.env.REACT_APP_FRBS_API_KEY,
@@ -11,4 +12,8 @@ const firebaseApp = {
     measurementId: process.env.REACT_APP_FRBS_MEAS_ID
 };
 
+var app = admin.initializeApp();
+
 export default firebase.initializeApp(firebaseApp);
+
+export const db = firebase.firestore()
