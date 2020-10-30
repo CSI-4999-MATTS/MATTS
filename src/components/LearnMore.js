@@ -2,7 +2,7 @@ import React from 'react';
 import '../stylesheets/App.css';
 import { makeStyles } from '@material-ui/core/styles';
 import NavBar from "./NavBar";
-import db from '../firebase/config'
+import { db } from '../firebase/config';
 
 function LearnMore() {
 
