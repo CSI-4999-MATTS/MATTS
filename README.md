@@ -1,7 +1,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Updating the Project
+## Running the Project
 When pulling new code, be sure to run `npm install`. This will install any node packages you may be missing that are required for development.
+- If you receive an error about npm not being found, please install the node package manager by following the instructions for [here](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+
+If you see a blank screen upon running `npm start`, and have not yet installed the Firebase CLI, do so [here](https://firebase.google.com/docs/cli).
 
 ## Available Scripts
 
