@@ -3,21 +3,13 @@ import ReactDOM from 'react-dom';
 import '../src/stylesheets/index.css';
 import App from "../src/components/App";
 import * as serviceWorker from './serviceWorker';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Login from "../src/components/Login";
-import LearnMore from "../src/components/LearnMore";
-import Dashboard from "../src/components/Dashboard";
+// import { BrowserRouter, Route, Switch } from 'react-router-dom';
+// import Login from "../src/components/Login";
+// import LearnMore from "../src/components/LearnMore";
+// import Dashboard from "../src/components/Dashboard";
 
 ReactDOM.render((
-  <BrowserRouter>
-    <Switch>
-        <Route exact path="/" component={App} />
-        <Route path="/Login" component={Login} />
-        <Route path="/App" component={App} />
-        <Route path="/LearnMore" component={LearnMore} />
-        <Route path="/Dashboard" component={Dashboard} />
-    </Switch>
-  </BrowserRouter>
+    <App />
   ), document.getElementById('root')
 );
 
