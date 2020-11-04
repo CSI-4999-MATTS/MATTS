@@ -4,6 +4,7 @@ import NavBar from './NavBar';
 import { makeStyles } from '@material-ui/core/styles';
 import defaultprofile from './defaultprofile.png';
 import { Link } from "react-router-dom";
+import { db } from '../firebase/config.js'
 
 function Dashboard() {
 
@@ -95,6 +96,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const classes = useStyles();
+
     return (
     <div className={classes.app}>
 

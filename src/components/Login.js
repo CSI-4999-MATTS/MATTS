@@ -5,7 +5,7 @@ import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import { makeStyles } from '@material-ui/core/styles';
 import NavBar from './NavBar';
 import * as firebaseui from 'firebaseui';
-import firebaseApp from '../firebase/config.js';
+import { firebaseApp } from '../firebase/config.js';
 
 
 function Login() {
@@ -77,11 +77,8 @@ var uiConfig = {
     // Popup signin flow rather than redirect flow.
     signInFlow: 'popup',
     signInSuccessUrl: '/Dashboard',
-    // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
-    //signInSuccessUrl: '/signedIn',
-    // We will display Google and Facebook as auth providers.
     signInOptions: [
-      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+      firebase.auth.GoogleAuthProvider.PROVIDER_ID
     ]
   };
 
@@ -92,9 +89,9 @@ if (ui.isPendingRedirect()){
   ui.start('#firebaseui-auth-container', uiConfig);
 }
 
-
-
 const classes = useStyles();
+
+
     return (
     <div className={classes.app}>
         <NavBar />
