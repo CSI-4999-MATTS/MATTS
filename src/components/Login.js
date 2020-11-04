@@ -5,7 +5,7 @@ import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import { makeStyles } from '@material-ui/core/styles';
 import NavBar from './NavBar';
 import * as firebaseui from 'firebaseui';
-import firebaseApp from '../firebase/config.js';
+import { firebaseApp } from '../firebase/config.js';
 
 
 function Login() {

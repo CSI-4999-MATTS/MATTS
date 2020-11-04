@@ -2,6 +2,7 @@ import React from 'react';
 import '../stylesheets/App.css';
 import { makeStyles } from '@material-ui/core/styles';
 import NavBar from "./NavBar";
+import { db } from '../firebase/config';
 
 function LearnMore() {
 
@@ -33,6 +34,18 @@ function LearnMore() {
 // }));
 
 // const classes = useStyles();
+
+db.collection("users").add({
+    first: "Ada",
+    last: "Lovelace",
+    born: 1815
+})
+.then(function(docRef) {
+    console.log("Document written with ID: ", docRef.id);
+})
+.catch(function(error) {
+    console.error("Error adding document: ", error);
+});
 
     return (
     <div className="Login">
