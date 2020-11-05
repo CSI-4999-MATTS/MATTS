@@ -5,6 +5,14 @@ import {makeStyles} from '@material-ui/core';
 import { Button } from '@material-ui/core';
 
 
+function handleLogOut() {
+    firebase.auth().signOut().then(function() {
+        console.log('Sign out succes')
+    }).catch(function(error){
+        console.log('Whoa, that didn\'t work')
+    })
+}
+
 function LogoutButton() {
 
     const useStyles = makeStyles((theme) => ({
@@ -25,10 +33,10 @@ function LogoutButton() {
     }))
 
     const classes = useStyles();
-
+    
     return (
         <Link to="/Home" className={classes.link}>
-            <Button className={classes.menuButton} onClick={firebase.auth().signOut()}>Logout</Button>
+            <Button className={classes.menuButton} onClick={handleLogOut()}>Logout</Button>
         </Link> 
     )
 }

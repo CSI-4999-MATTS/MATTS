@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import '../src/stylesheets/index.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { firebaseApp } from '../firebase/config';
 import Login from "../components/Login";
@@ -37,9 +36,10 @@ function App() {
                     // Update state
                     updateUserLogIn(isLoggedIn = true)
                     setUserId(userId = uid)
-                }
-
-            })
+                } else {
+                    console.log('No user exists')
+                } 
+    })
     
     return (
         <BrowserRouter>

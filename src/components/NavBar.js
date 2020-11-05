@@ -62,7 +62,9 @@ function NavBar(props) {
             <Toolbar className={classes.toolbar}>
                 <IconButton edge="start" className={classes.menulist} aria-label="menu"><MenuIcon /></IconButton>
                     <Typography variant="h3" className={classes.title}>
-                        <Link to="/App" className={classes.link}><img className={classes.delvelogo} src={delve} /></Link>
+                        <Link to="/Home" className={classes.link}>
+                          <img className={classes.delvelogo} src={delve} alt={"Delve Logo"}/>
+                        </Link>
                     </Typography>
                   <div className={classes.link}>
                     {isLoggedIn ? <LogoutButton /> : <LogInButton />}

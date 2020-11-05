@@ -4,7 +4,6 @@ import firebase from 'firebase';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import { makeStyles } from '@material-ui/core/styles';
 import NavBar from './NavBar';
-import * as firebaseui from 'firebaseui';
 import { firebaseApp } from '../firebase/config.js';
 
 
@@ -78,18 +77,6 @@ var uiConfig = {
       firebase.auth.GoogleAuthProvider.PROVIDER_ID
     ]
   };
-
-if (firebaseui.auth.AuthUI.getInstance()){
-    var ui = firebaseui.auth.AuthUI.getInstance()
-    ui.start('#firebaseui-auth-container', uiConfig)
-} else {
-    ui = new firebaseui.auth.AuthUI(firebase.auth())
-    ui.start('#firebaseui-auth-container', uiConfig)
-};
-
-if (ui.isPendingRedirect()){
-  ui.start('#firebaseui-auth-container', uiConfig);
-}
 
 const classes = useStyles();
 

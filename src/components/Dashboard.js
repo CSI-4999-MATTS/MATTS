@@ -4,7 +4,6 @@ import NavBar from './NavBar';
 import { makeStyles } from '@material-ui/core/styles';
 import defaultprofile from './defaultprofile.png';
 import { Link } from "react-router-dom";
-import { db } from '../firebase/config.js'
 
 function Dashboard(props) {
 
@@ -112,7 +111,7 @@ const classes = useStyles();
         
         <div className={classes.page}>
             <div>
-                <img className={classes.photo} src={defaultprofile} />
+                <img className={classes.photo} src={defaultprofile} alt={"UserPhoto"}/>
                 <h1 className={classes.profilename} > props.user.displayName </h1>
                 <h4 className={classes.profileinfo}>Email: "useremail@email.com"</h4>
                 <h4 className={classes.profileinfo}>Skill Level: "Rank"</h4>

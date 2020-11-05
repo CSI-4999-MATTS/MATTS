@@ -84,7 +84,7 @@ function Home() {
             <NavBar />
        
             <div>
-                <img className={classes.photo} src={onlineclass} />
+                <img className={classes.photo} src={onlineclass} alt={"Online Course"}/>
             </div>
             
             <div className={classes.border}>    
@@ -104,7 +104,7 @@ function Home() {
             </div>
             </div>
             <div>
-                <img className={classes.photo} src={onlineclass2} />
+                <img className={classes.photo} src={onlineclass2} alt={"People chatting"}/>
             </div>
        
             <div className={classes.border}>
