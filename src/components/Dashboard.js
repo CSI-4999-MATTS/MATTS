@@ -98,6 +98,11 @@ const useStyles = makeStyles((theme) => ({
 const classes = useStyles();
 
     console.log(props);
+    if (props.user){
+        console.log('Oh yeahhhhh');
+    } else {
+        console.log('Hmmmm')
+    }
 
     return (
     <div className={classes.app}>

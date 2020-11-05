@@ -82,37 +82,47 @@ var uiConfig = {
     ]
   };
 
-var ui = new firebaseui.auth.AuthUI(firebaseApp.auth());
+if (firebaseui.auth.AuthUI.getInstance()){
+    const ui = firebaseui.auth.AuthUI.getInstance()
+    ui.start('#firebaseui-auth-container', uiConfig)
+} else {
+    const ui = new firebaseui.auth.AuthUI(firebase.auth())
+    ui.start('#firebaseui-auth-container', uiConfig)
+};
 
-// Check to see if pending redirect from Auth0 provider - i.e. Google
-if (ui.isPendingRedirect()){
-  ui.start('#firebaseui-auth-container', uiConfig);
-}
+// var ui = new firebaseui.auth.AuthUI(firebaseApp.auth());
+
+// // Check to see if pending redirect from Auth0 provider - i.e. Google
+// if (ui.isPendingRedirect()){
+//   ui.start('#firebaseui-auth-container', uiConfig);
+// }
 
 const classes = useStyles();
 
 
     return (
-    <div className={classes.app}>
-        <NavBar />
-        
-        <div className={classes.signinlink}> 
-                <h1 className={classes.header}>Login</h1>
-        
-                <p className={classes.text}> Sign-up and login are simple! Just login using a valid Gmail account and get started right away!</p>  
-        
-            <StyledFirebaseAuth className={classes.googlelink} uiConfig={uiConfig} firebaseAuth={firebaseApp.auth()}/>
-        
+    
+        <div className={classes.app}>
+            <NavBar />
+            
+            <div className={classes.signinlink}> 
+                    <h1 className={classes.header}>Login</h1>
+            
+                    <p className={classes.text}> Sign-up and login are simple! Just login using a valid Gmail account and get started right away!</p>  
+            
+                    <div id='firebaseui-auth-container'>
+                        <StyledFirebaseAuth className={classes.googlelink} uiConfig={uiConfig} firebaseAuth={firebaseApp.auth()}/>
+                    </div>
+
+            </div>
+
+            <div className={classes.footer}>
+                Copyright: Allison Broski, Shelby McKay, Maurice Fuentes, Timothy Carpenter, Tanner Porteous
+                <p>Oakland University</p>
+            
+            </div>
 
         </div>
-
-        <div className={classes.footer}>
-            Copyright: Allison Broski, Shelby McKay, Maurice Fuentes, Timothy Carpenter, Tanner Porteous
-            <p>Oakland University</p>
-        
-        </div>
-
-    </div>
     
     );
 
