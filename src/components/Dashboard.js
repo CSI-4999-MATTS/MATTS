@@ -105,7 +105,7 @@ const classes = useStyles();
         <div className={classes.page}>
             <div>
                 <img className={classes.photo} src={defaultprofile} />
-                <h1 className={classes.profilename} > "Profile Name" </h1>
+                <h1 className={classes.profilename} > user.displayName </h1>
                 <h4 className={classes.profileinfo}>Email: "useremail@email.com"</h4>
                 <h4 className={classes.profileinfo}>Skill Level: "Rank"</h4>
                 <h4 className={classes.profileinfo}>Learning Progress</h4>
