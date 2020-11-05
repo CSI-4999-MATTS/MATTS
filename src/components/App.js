@@ -9,7 +9,6 @@ import Home from "../components/Home"
 import { db } from '../firebase/config';
 
 
-//test comment
 function App() {
 
     // See if we have logged in user; control state from here
@@ -21,13 +20,10 @@ function App() {
             var uid=user.uid
             
             var userinfo = db.collection("Users").doc(uid)
-            
+            // does not get user information if not previously existing in DB, NEED TO FIX!!!
             userinfo.get().then(function(doc) {
-                if (doc.exists) {
+                if (!doc.exists) {
                     doc.data();
-                    
-                } else {
-                    
                     db.collection("Users").doc(uid).set({
                         name: user.displayName,
                         email: user.email,
@@ -37,9 +33,8 @@ function App() {
                         testingDevRank: 0,
                         maintenanceRank: 0,
                     });
-                    
                 }
-              console.log(doc.data());  
+              var userinformation = doc.data();  
                 
             }
                                
@@ -57,9 +52,10 @@ function App() {
                 <Route path="/Login" component={Login} />
                 <Route path="/App" component={Home} />
                 <Route path="/LearnMore" component={LearnMore} />
-                <Route path="/Dashboard" component={Dashboard} />
+                <Route path="/Dashboard" render={(props) => <Dashboard{...props} user={userinformation} />} />
             </Switch>
         </BrowserRouter>
+        
     )  
 }
 
