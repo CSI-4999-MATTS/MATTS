@@ -97,9 +97,10 @@ const useStyles = makeStyles((theme) => ({
 
 const classes = useStyles();
 
-    console.log(props);
-    if (props.user){
-        console.log('Oh yeahhhhh');
+    if (props.loggedIn){
+        // Fetch information from DB
+        console.log(props.user)
+        
     } else {
         console.log('Hmmmm')
     }
@@ -107,7 +108,7 @@ const classes = useStyles();
     return (
     <div className={classes.app}>
 
-        <NavBar />
+        <NavBar loggedIn={props.loggedIn}/>
         
         <div className={classes.page}>
             <div>

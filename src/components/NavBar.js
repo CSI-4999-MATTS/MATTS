@@ -1,11 +1,13 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/core';
-import {AppBar, Toolbar, IconButton, Typography, Button} from '@material-ui/core';
+import {AppBar, Toolbar, IconButton, Typography} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from "react-router-dom";
+import LogInButton from '../components/LogInButton';
+import LogoutButton from './LogoutButton.js';
 import delve from './Delve.png';
 
-function NavBar () {
+function NavBar(props) {
 
     const useStyles = makeStyles((theme) => ({
       root: {
@@ -51,7 +53,9 @@ function NavBar () {
         },
     }));
 
-      const classes = useStyles();
+    const classes = useStyles();
+
+    const isLoggedIn = props.loggedIn;
 
       return (
         <AppBar position="static" elevation={3}>
@@ -60,7 +64,9 @@ function NavBar () {
                     <Typography variant="h3" className={classes.title}>
                         <Link to="/App" className={classes.link}><img className={classes.delvelogo} src={delve} /></Link>
                     </Typography>
-                <Link to="/Login" className={classes.link}><Button className={classes.menuButton}>Login</Button></Link>
+                  <div className={classes.link}>
+                    {isLoggedIn ? <LogoutButton /> : <LogInButton />}
+                  </div>
             </Toolbar>
         </AppBar>
       )

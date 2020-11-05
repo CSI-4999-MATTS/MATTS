@@ -70,9 +70,6 @@ const useStyles = makeStyles((theme) => ({
     
 }));
 
-
-
-
 var uiConfig = {
     // Popup signin flow rather than redirect flow.
     signInFlow: 'popup',
@@ -83,19 +80,16 @@ var uiConfig = {
   };
 
 if (firebaseui.auth.AuthUI.getInstance()){
-    const ui = firebaseui.auth.AuthUI.getInstance()
+    var ui = firebaseui.auth.AuthUI.getInstance()
     ui.start('#firebaseui-auth-container', uiConfig)
 } else {
-    const ui = new firebaseui.auth.AuthUI(firebase.auth())
+    ui = new firebaseui.auth.AuthUI(firebase.auth())
     ui.start('#firebaseui-auth-container', uiConfig)
 };
 
-// var ui = new firebaseui.auth.AuthUI(firebaseApp.auth());
-
-// // Check to see if pending redirect from Auth0 provider - i.e. Google
-// if (ui.isPendingRedirect()){
-//   ui.start('#firebaseui-auth-container', uiConfig);
-// }
+if (ui.isPendingRedirect()){
+  ui.start('#firebaseui-auth-container', uiConfig);
+}
 
 const classes = useStyles();
 
