@@ -95,10 +95,8 @@ function Home(props) {
             
             
             <div>
-                <button className="mdc-button mdc-button--touch" className={classes.buttons}>
-                    <div className="mdc-button__ripple"></div>
-                        <Link to="/LearnMore" className={classes.buttonlinks}><span className="mdc-button__label">Learn More</span></Link>
-                    <div className="mdc-button__touch"></div>
+                <button className={classes.buttons}>
+                        <Link to="/LearnMore" className={classes.buttonlinks}>Learn More</Link>
                 </button>
                 
             </div>
@@ -116,10 +114,8 @@ function Home(props) {
             
             {/* Should alter this based on if logged in or not */}
             <div class="mdc-touch-target-wrapper">
-                <button class="mdc-button mdc-button--touch" className={classes.buttons}>
-                    <div class="mdc-button__ripple"></div>
-                    <Link to="/Login" className={classes.buttonlinks}><span class="mdc-button__label">Sign Up</span></Link>
-                    <div class="mdc-button__touch"></div>
+                <button className={classes.buttons}>
+                    <Link to="/Login" className={classes.buttonlinks}>Sign Up</Link>
                 </button>
             </div>
             
