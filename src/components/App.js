@@ -14,7 +14,6 @@ function App() {
     var [userId, setUserId] = useState('000XXX')
 
     firebaseApp.auth().onAuthStateChanged(function(user) {
-        console.log('Auth state change')
         // If user exists
         if (user) {
             var uid=user.uid
@@ -26,11 +25,11 @@ function App() {
                     db.collection("Users").doc(uid).set({
                         name: user.displayName,
                         email: user.email,
-                        planningRank: 0,
-                        designRank: 0,
-                        implementationRank: 0,
-                        testingDevRank: 0,
-                        maintenanceRank: 0,
+                        planningRank: 'Beginner',
+                        designRank: 'Beginner',
+                        implementationRank: 'Beginner',
+                        testingDevRank: 'Beginner',
+                        maintenanceRank: 'Beginner',
                         })
                     }})
 
@@ -39,7 +38,6 @@ function App() {
                     setUserId(userId = uid)
 
                 } else {
-                    console.log('No user exists')
                     setUserLogIn(isLoggedIn = false)
                     setUserId(userId = '000XXX')
                 } 
