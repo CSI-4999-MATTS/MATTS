@@ -109,16 +109,8 @@ const classes = useStyles();
         <div className={classes.page}>
             <p className={classes.websiteinfo}>Want to advance your skills in web development with Delve? Get signed up with your google account today by clicking the link below!</p> 
                 
-<<<<<<< HEAD
-                {/* Need to edit this in case they are logged in already */}
-                <button class="mdc-button mdc-button--touch" className={classes.buttons}>
-                    <div class="mdc-button__ripple"></div>
-                        <Link to="/LearnMore" className={classes.buttonlinks}><span class="mdc-button__label">Sign Up</span></Link>
-                    <div class="mdc-button__touch"></div>
-=======
                 <button className={classes.buttons}>
                         <Link to="/LearnMore" className={classes.buttonlinks}>Sign Up</Link>
->>>>>>> 243c975c5149e573d31f5e899b0f72708eae1729
                 </button>
                 
         </div>

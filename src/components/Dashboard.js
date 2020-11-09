@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import defaultprofile from './defaultprofile.png';
 import { Link } from "react-router-dom";
 import LinearProgress from '@material-ui/core/LinearProgress';
+import { db } from '../firebase/config';
 
 
 function Dashboard(props) {
@@ -132,10 +133,20 @@ const useStyles = makeStyles((theme) => ({
 
 const classes = useStyles();
 
+var userName, userEmail, planRank, designRank, implementRank, testRank, maintRank;
+
     if (props.isLoggedIn){
         // Fetch information from DB
-        console.log(props.user)
-        
+        // db.collection('Users').doc(props.user).onSnapshot(
+        //     // Includes listening for metadata information; this means updates to the storage system itself.
+        //     {includeMetadataChanges: true},
+        // function(userInfo) {
+        //     console.log(userInfo)
+        // } ).addOnCompleteListener((complete) => {
+        //     if (complete.isSuccessful()) {
+        //         console.log('success!')
+        //     }
+        // })
     } else {
         console.log('Hmmmm')
     }
@@ -147,8 +158,8 @@ const classes = useStyles();
         
         <div className={classes.page}>
             <img className={classes.photo} src={defaultprofile} alt={"UserPhoto"}/>
-            <h1 className={classes.profilename} >First Last Name</h1>
-            <h4 className={classes.profileinfo}>Email: "useremail@email.com"</h4>
+            <h1 className={classes.profilename} >{userName}</h1>
+            <h4 className={classes.profileinfo}>Email: {userEmail}</h4>
             <h4 className={classes.profileinfo}>Rank: "Rank"</h4>
                     
         </div>
