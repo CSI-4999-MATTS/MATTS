@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import NavBar from './NavBar';
 
 
-function Home() {
+function Home(props) {
 
       
     const useStyles = makeStyles((theme) => ({
@@ -81,7 +81,7 @@ function Home() {
         
         <div className={classes.app}>
     
-            <NavBar />
+            <NavBar loggedIn={props.isLoggedIn}/>
        
             <div>
                 <img className={classes.photo} src={onlineclass} alt={"Online Course"}/>
@@ -114,6 +114,7 @@ function Home() {
             </div>
             
             
+            {/* Should alter this based on if logged in or not */}
             <div class="mdc-touch-target-wrapper">
                 <button class="mdc-button mdc-button--touch" className={classes.buttons}>
                     <div class="mdc-button__ripple"></div>

@@ -36,7 +36,7 @@ function LogoutButton() {
     
     return (
         <Link to="/Home" className={classes.link}>
-            <Button className={classes.menuButton} onClick={handleLogOut()}>Logout</Button>
+            <Button className={classes.menuButton} onClick={() => {handleLogOut()}}>Logout</Button>
         </Link> 
     )
 }

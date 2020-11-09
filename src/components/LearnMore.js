@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import NavBar from "./NavBar";
 import { Link } from "react-router-dom";
 
-function LearnMore() {
+function LearnMore(props) {
 
 const useStyles = makeStyles((theme) => ({
     
@@ -86,7 +86,7 @@ const classes = useStyles();
     return (
     <div className={classes.app}>
 
-        <NavBar />
+        <NavBar loggedIn={props.isLoggedIn} />
         
         <div className={classes.page}>
             <h2 className={classes.header}>How We Teach</h2>
@@ -109,6 +109,7 @@ const classes = useStyles();
         <div className={classes.page}>
             <p className={classes.websiteinfo}>Want to advance your skills in web development with Delve? Get signed up with your google account today by clicking the link below!</p> 
                 
+                {/* Need to edit this in case they are logged in already */}
                 <button class="mdc-button mdc-button--touch" className={classes.buttons}>
                     <div class="mdc-button__ripple"></div>
                         <Link to="/LearnMore" className={classes.buttonlinks}><span class="mdc-button__label">Sign Up</span></Link>

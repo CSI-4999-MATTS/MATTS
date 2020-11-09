@@ -96,7 +96,7 @@ const useStyles = makeStyles((theme) => ({
 
 const classes = useStyles();
 
-    if (props.loggedIn){
+    if (props.isLoggedIn){
         // Fetch information from DB
         console.log(props.user)
         
@@ -107,7 +107,7 @@ const classes = useStyles();
     return (
     <div className={classes.app}>
 
-        <NavBar loggedIn={props.loggedIn}/>
+        <NavBar loggedIn={props.isLoggedIn}/>
         
         <div className={classes.page}>
             <div>

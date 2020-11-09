@@ -10,10 +10,11 @@ import { db } from '../firebase/config';
 
 function App() {
     // React Hooks to manage state
-    var [isLoggedIn, updateUserLogIn] = useState(false)
+    var [isLoggedIn, setUserLogIn] = useState(false)
     var [userId, setUserId] = useState('000XXX')
 
     firebaseApp.auth().onAuthStateChanged(function(user) {
+        console.log('Auth state change')
         // If user exists
         if (user) {
             var uid=user.uid
@@ -34,10 +35,13 @@ function App() {
                     }})
 
                     // Update state
-                    updateUserLogIn(isLoggedIn = true)
+                    setUserLogIn(isLoggedIn = true)
                     setUserId(userId = uid)
+
                 } else {
                     console.log('No user exists')
+                    setUserLogIn(isLoggedIn = false)
+                    setUserId(userId = '000XXX')
                 } 
     })
     
@@ -45,10 +49,11 @@ function App() {
         <BrowserRouter>
             <Switch>
                 <Route exact path="/" component={Home} />
-                <Route path="/Login" component={Login} />
-                <Route path="/Home" component={Home} />
-                <Route path="/LearnMore" component={LearnMore} />
-                <Route path="/Dashboard" render={(props) => < Dashboard {...props} loggedIn={isLoggedIn} user={userId}  />} />
+                {/* Don't neeed to change this, since it should only be accessable when not logged in */}
+                <Route path="/Login" component={Login} /> 
+                <Route path="/Home" render={(props) => < Home {...props} isLoggedIn={isLoggedIn} />} />
+                <Route path="/LearnMore" render={(props) => < LearnMore {...props} isLoggedIn={isLoggedIn} />} />
+                <Route path="/Dashboard" render={(props) => < Dashboard {...props} isLoggedIn={isLoggedIn} user={userId}  />} />
             </Switch>
         </BrowserRouter>
         
