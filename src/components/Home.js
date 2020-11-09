@@ -113,7 +113,7 @@ function Home(props) {
             
             
             {/* Should alter this based on if logged in or not */}
-            <div class="mdc-touch-target-wrapper">
+            <div className="mdc-touch-target-wrapper">
                 <button className={classes.buttons}>
                     <Link to="/Login" className={classes.buttonlinks}>Sign Up</Link>
                 </button>
