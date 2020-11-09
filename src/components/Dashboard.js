@@ -3,9 +3,6 @@ import '../stylesheets/App.css';
 import NavBar from './NavBar';
 import UserInfo from './userInfo';
 import { makeStyles } from '@material-ui/core/styles';
-import defaultprofile from './defaultprofile.png';
-import { Link } from "react-router-dom";
-import LinearProgress from '@material-ui/core/LinearProgress';
 import { db } from '../firebase/config';
 
 
@@ -35,13 +32,14 @@ function Dashboard(props) {
 
     const classes = useStyles();
 
-    var userName, userEmail, planRank, designRank, implementRank, testRank, maintRank;
-
     useEffect(() => {
+        // Listens for metadata changes - i.e. updates to documents and collections themselves, not just attributes
         db.collection('Users').doc(props.user).onSnapshot({includeMetadataChanges: true}, 
+            // userInfo is the actual document with ID props.user
             function(userInfo) {
+                // Pulls user info out of DB
                 dataDash.current = userInfo.data()
-                console.log('dataDash: ', dataDash)
+                // Only show profile info once data is properly retrieved - solution to asynch behavior
                 if (dataDash.current !== undefined){
                     setLoading(false)
                 }
@@ -53,7 +51,7 @@ function Dashboard(props) {
 
             <NavBar loggedIn={props.isLoggedIn}/>
 
-            {loading ?  <h1>We're watching, and we're waiting</h1> :<UserInfo user={dataDash['current']}/>}
+            {loading ?  <h1>We're watching, and we're waiting</h1> : <UserInfo user={dataDash['current']}/>}
                
             <div className={classes.footer}>
                 Copyright: Allison Broski, Shelby McKay, Maurice Fuentes, Timothy Carpenter, Tanner Porteous

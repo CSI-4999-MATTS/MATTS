@@ -7,7 +7,15 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 
 function UserInfo(props) {
 
-    console.log(props.user['current'])
+    // Gets all user info from props
+    var userName = props.user.name;
+    var userEmail = props.user.email;
+    var planRank = props.user.planningRank;
+    var designRank = props.user.designRank;
+    var implementRank = props.user.implementationRank;
+    var testRank = props.user.testingDevRank; 
+    var maintRank = props.user.maintenanceRank;
+
 
     const useStyles = makeStyles((theme) => ({
         
@@ -113,26 +121,27 @@ function UserInfo(props) {
 
     const classes = useStyles();
 
+
     return (
         <div>
             <div className={classes.page}>
                 <img className={classes.photo} src={defaultprofile} alt={"UserPhoto"}/>
-                <h1 className={classes.profilename} >UserName</h1>
-                <h4 className={classes.profileinfo}>Email: email</h4>
+                <h1 className={classes.profilename} >{userName}</h1>
+                <h4 className={classes.profileinfo}>Email: {userEmail}</h4>
                 <h4 className={classes.profileinfo}>Rank: "Rank"</h4>
             </div>
         
             <div className={classes.page}>
                 <h1 className={classes.progressname} >Learning Progress</h1>
-                <p className={classes.progressinfotop}>Planning - 75%</p>
+                <p className={classes.progressinfotop}>Planning - {planRank}</p>
                 <LinearProgress variant="determinate" className={classes.progressbar} value={75} />
-                <p className={classes.progressinfo}>Design - 50%</p>
+                <p className={classes.progressinfo}>Design - {designRank}</p>
                 <LinearProgress variant="determinate" className={classes.progressbar} value={50} />
-                <p className={classes.progressinfo}>Implementation - 100%</p>
+                <p className={classes.progressinfo}>Implementation - {implementRank}</p>
                 <LinearProgress variant="determinate" className={classes.progressbar} value={100} />
-                <p className={classes.progressinfo}>Testing & Deployment - 75%</p>
+                <p className={classes.progressinfo}>Testing & Deployment - {testRank}</p>
                 <LinearProgress variant="determinate" className={classes.progressbar} value={75} />
-                <p className={classes.progressinfo}>Maintenance - 25%</p>
+                <p className={classes.progressinfo}>Maintenance - {maintRank}</p>
                 <LinearProgress variant="determinate" className={classes.progressbarbottom} value={25} />
             </div>
             
