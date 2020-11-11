@@ -25,13 +25,27 @@ function LearningStep(props) {
             marginBottom: 25,
         },
     }));
-
     const classes = useStyles();
+
+    function percentageCalculator (rank) {
+        switch (rank){
+            case 'Beginner':
+                return 25;
+            case 'Intermediate':
+                return 50;
+            case 'Advanced':
+                return 75;
+            case 'Professional':
+                return 100;
+            default:
+                return 0;
+        }
+    };
 
     return (
         <div>
             <p className={classes.progressinfo}>{title} - {rank}</p>
-            <LinearProgress variant="determinate" className={classes.progressbar} value={75} />
+            <LinearProgress variant="determinate" className={classes.progressbar} value={percentageCalculator(rank)} />
         </div>
     )
 }
