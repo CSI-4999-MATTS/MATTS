@@ -3,7 +3,7 @@ import '../stylesheets/App.css';
 import { makeStyles } from '@material-ui/core/styles';
 import defaultprofile from './defaultprofile.png';
 import { Link } from "react-router-dom";
-import LinearProgress from '@material-ui/core/LinearProgress';
+import LearningStep from '../components/LearningStep';
 
 function UserInfo(props) {
 
@@ -83,6 +83,7 @@ function UserInfo(props) {
             paddingTop: 10,
             paddingLeft: 10,
             borderTop: '2px solid #0D7377',
+            marginTop: 0,
         },
         
         progressinfotop: {
@@ -97,7 +98,7 @@ function UserInfo(props) {
             marginLeft: 25,
             position: 'relative',
             marginRight: 25,
-            
+            marginBottom: 25,
         },
         
         progressbarbottom: {
@@ -115,6 +116,7 @@ function UserInfo(props) {
             marginTop: 0,
             paddingLeft: 25,
             paddingBottom: 5,
+            marginBottom: 0,
         },
             
     }));
@@ -133,16 +135,11 @@ function UserInfo(props) {
         
             <div className={classes.page}>
                 <h1 className={classes.progressname} >Learning Progress</h1>
-                <p className={classes.progressinfotop}>Planning - {planRank}</p>
-                <LinearProgress variant="determinate" className={classes.progressbar} value={75} />
-                <p className={classes.progressinfo}>Design - {designRank}</p>
-                <LinearProgress variant="determinate" className={classes.progressbar} value={50} />
-                <p className={classes.progressinfo}>Implementation - {implementRank}</p>
-                <LinearProgress variant="determinate" className={classes.progressbar} value={100} />
-                <p className={classes.progressinfo}>Testing & Deployment - {testRank}</p>
-                <LinearProgress variant="determinate" className={classes.progressbar} value={75} />
-                <p className={classes.progressinfo}>Maintenance - {maintRank}</p>
-                <LinearProgress variant="determinate" className={classes.progressbarbottom} value={25} />
+                <LearningStep rank={planRank} title={'Planning'} />
+                <LearningStep rank={designRank} title={'Design'} />
+                <LearningStep rank={implementRank} title={'Implementation'} />
+                <LearningStep rank={testRank} title={'Testing & Deployment'} />
+                <LearningStep rank={maintRank} title={'Maintenance'} />
             </div>
             
             <div className={classes.page}>

@@ -51,6 +51,8 @@ function Dashboard(props) {
 
             <NavBar loggedIn={props.isLoggedIn}/>
 
+            {/* Need to change loading to a spinner */}
+
             {loading ?  <h1>We're watching, and we're waiting</h1> : <UserInfo user={dataDash['current']}/>}
                
             <div className={classes.footer}>
