@@ -113,14 +113,10 @@ function Home(props) {
                 The path to gaining technical skills starts here. Take your first step to learning web development.
             </div>
 
-            {/* Should alter this based on if logged in or not */}
-            {/* Does not work, it doesnt detect user logged in */}
             <div className="mdc-touch-target-wrapper">
 
                 <button className={classes.buttons}>
-                    
                     {props.isLoggedIn ? <DashboardButton /> : <Link to="/Login" className={classes.buttonlinks}>Sign Up</Link>}
-
                 </button>
             </div>
             
