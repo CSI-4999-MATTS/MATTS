@@ -4,7 +4,7 @@ import onlineclass from './onlineclass.jpg';
 import onlineclass2 from './onlineclass2.jpg';
 import { Link } from "react-router-dom";
 import NavBar from './NavBar';
-
+import DashboardButton from './DashboardButton.js';
 
 function Home(props) {
 
@@ -76,6 +76,8 @@ function Home(props) {
         
     }));
     const classes = useStyles();
+
+    
     
         return (
         
@@ -110,12 +112,15 @@ function Home(props) {
             <div className={classes.sitefont}>        
                 The path to gaining technical skills starts here. Take your first step to learning web development.
             </div>
-            
-            
+
             {/* Should alter this based on if logged in or not */}
+            {/* Does not work, it doesnt detect user logged in */}
             <div className="mdc-touch-target-wrapper">
+
                 <button className={classes.buttons}>
-                    <Link to="/Login" className={classes.buttonlinks}>Sign Up</Link>
+                    
+                    {props.isLoggedIn ? <DashboardButton /> : <Link to="/Login" className={classes.buttonlinks}>Sign Up</Link>}
+
                 </button>
             </div>
             

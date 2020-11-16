@@ -50,6 +50,7 @@ function App() {
                 {/* Don't neeed to change this, since it should only be accessable when not logged in */}
                 <Route path="/Login" component={Login} /> 
                 <Route path="/Home" render={(props) => < Home {...props} isLoggedIn={isLoggedIn} />} />
+                
                 <Route path="/LearnMore" render={(props) => < LearnMore {...props} isLoggedIn={isLoggedIn} />} />
                 <Route path="/Dashboard" render={(props) => < Dashboard {...props} isLoggedIn={isLoggedIn} user={userId}  />} />
             </Switch>

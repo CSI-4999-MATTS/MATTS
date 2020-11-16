@@ -3,6 +3,7 @@ import '../stylesheets/App.css';
 import { makeStyles } from '@material-ui/core/styles';
 import NavBar from "./NavBar";
 import { Link } from "react-router-dom";
+import HomeButton from './HomeButton.js';
 
 function LearnMore(props) {
 
@@ -110,7 +111,9 @@ const classes = useStyles();
             <p className={classes.websiteinfo}>Want to advance your skills in web development with Delve? Get signed up with your google account today by clicking the link below!</p> 
                 
                 <button className={classes.buttons}>
-                        <Link to="/LearnMore" className={classes.buttonlinks}>Sign Up</Link>
+                    
+                    {props.isLoggedIn ? <HomeButton /> : <Link to="/Login" className={classes.buttonlinks}>Sign Up</Link>}
+
                 </button>
                 
         </div>
