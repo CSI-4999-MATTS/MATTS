@@ -31,7 +31,10 @@ class QuizStart extends React.Component {
             <div>
                 <NavBar loggedIn={this.props.isLoggedIn}/>
                 <h1>{this.state.track} Quiz</h1>
+                {/* Would want a conditionally rendering component here that will render question text, or not show up at all? */}
+                {/* Do ideally need a start button */}
                 <button>{button}</button>
+
             </div>
         )
     }
