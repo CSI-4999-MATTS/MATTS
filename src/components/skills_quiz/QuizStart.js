@@ -8,7 +8,7 @@ class QuizStart extends React.Component {
         super();
         this.state = {
             track: 'Planning',
-            progress: 0
+            isHome: true,
         };
     }
 
@@ -24,7 +24,7 @@ class QuizStart extends React.Component {
     handleClick() {
         console.log('Clicked!')
         this.setState(state => ({
-            progress: 1
+            isHome: false
         }));
     }
 
@@ -32,10 +32,10 @@ class QuizStart extends React.Component {
     render() {
         let display;
 
-        if (this.state.progress === 0){
+        if (this.state.isHome){
             display = <button onClick={this.handleClick}>Start</button>
         } else {
-            display = <QuizQuestion />
+            display = <QuizQuestion track={this.state.track}/>
         }
 
         return (
