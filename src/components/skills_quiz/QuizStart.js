@@ -1,12 +1,13 @@
-import { Title } from '@material-ui/icons';
 import React from 'react'
 import NavBar from '../NavBar';
 
+// We're using a class component here, because they tend to make dealing with state a little easier.
 class QuizStart extends React.Component {
     constructor(props){
         super();
         this.state = {
-            track: 'Planning'
+            track: 'Planning',
+            progress: 0
         };
     }
 
@@ -19,11 +20,18 @@ class QuizStart extends React.Component {
 
 
     render() {
+        let button;
+        if (this.state.progress === 0){
+            button = "Start";
+        } else {
+            button = "Next";
+        }
+
         return (
             <div>
                 <NavBar loggedIn={this.props.isLoggedIn}/>
-                <h1>Greetings mortals</h1>
-                <h2>{this.state.track}</h2>
+                <h1>{this.state.track} Quiz</h1>
+                <button>{button}</button>
             </div>
         )
     }
