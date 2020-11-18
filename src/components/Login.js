@@ -4,7 +4,6 @@ import firebase from 'firebase';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import { makeStyles } from '@material-ui/core/styles';
 import NavBar from './NavBar';
-import * as firebaseui from 'firebaseui';
 import { firebaseApp } from '../firebase/config.js';
 
 
@@ -70,52 +69,41 @@ const useStyles = makeStyles((theme) => ({
     
 }));
 
-
-
-
 var uiConfig = {
     // Popup signin flow rather than redirect flow.
     signInFlow: 'popup',
     signInSuccessUrl: '/Dashboard',
-    // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
-    //signInSuccessUrl: '/signedIn',
-    // We will display Google and Facebook as auth providers.
     signInOptions: [
-      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+      firebase.auth.GoogleAuthProvider.PROVIDER_ID
     ]
   };
 
-var ui = new firebaseui.auth.AuthUI(firebaseApp.auth());
-
-// Check to see if pending redirect from Auth0 provider - i.e. Google
-if (ui.isPendingRedirect()){
-  ui.start('#firebaseui-auth-container', uiConfig);
-}
-
-
-
 const classes = useStyles();
+
+
     return (
-    <div className={classes.app}>
-        <NavBar />
-        
-        <div className={classes.signinlink}> 
-                <h1 className={classes.header}>Login</h1>
-        
-                <p className={classes.text}> Sign-up and login are simple! Just login using a valid Gmail account and get started right away!</p>  
-        
-            <StyledFirebaseAuth className={classes.googlelink} uiConfig={uiConfig} firebaseAuth={firebaseApp.auth()}/>
-        
+    
+        <div className={classes.app}>
+            <NavBar />
+            
+            <div className={classes.signinlink}> 
+                    <h1 className={classes.header}>Login</h1>
+            
+                    <p className={classes.text}> Sign-up and login are simple! Just login using a valid Gmail account and get started right away!</p>  
+            
+                    <div id='firebaseui-auth-container'>
+                        <StyledFirebaseAuth className={classes.googlelink} uiConfig={uiConfig} firebaseAuth={firebaseApp.auth()}/>
+                    </div>
+
+            </div>
+
+            <div className={classes.footer}>
+                Copyright: Allison Broski, Shelby McKay, Maurice Fuentes, Timothy Carpenter, Tanner Porteous
+                <p>Oakland University</p>
+            
+            </div>
 
         </div>
-
-        <div className={classes.footer}>
-            Copyright: Allison Broski, Shelby McKay, Maurice Fuentes, Timothy Carpenter, Tanner Porteous
-            <p>Oakland University</p>
-        
-        </div>
-
-    </div>
     
     );
 

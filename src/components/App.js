@@ -1,141 +1,62 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import onlineclass from './onlineclass.jpg';
-import onlineclass2 from './onlineclass2.jpg';
-import { Link } from "react-router-dom";
-import NavBar from './NavBar';
+import React, { useState } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { firebaseApp } from '../firebase/config';
+import Login from "../components/Login";
+import LearnMore from "../components/LearnMore";
+import Dashboard from "../components/Dashboard";
+import Home from "../components/Home"
+import { db } from '../firebase/config';
 
 
-//test comment
 function App() {
+    // React Hooks to manage state
+    var [isLoggedIn, setUserLogIn] = useState(false)
+    var [userId, setUserId] = useState('000XXX')
 
-      
-const useStyles = makeStyles((theme) => ({
-    
-    app:{
-        backgroundColor: "#EEEEEE",
-        width: "101%",
-    },
+    firebaseApp.auth().onAuthStateChanged(function(user) {
+        // If user exists
+        if (user) {
+            var uid=user.uid
+            var userinfo = db.collection("Users").doc(uid)
 
-    footer:{
-        textAlign:'center',
-        height: 75,
-        opacity: .3,
-        fontSize: 10,
-        marginTop: 150,
-        bottom: 0,
-        display: 'block',
-        width: '100%',
-        
-    },
-    
-    photo:{
-        position: 'relative',
-        marginTop: 75,
-        width: '70%',
-        marginLeft: '15%',
-        marginRight: '15%',
-        borderTopLeftRadius: 10,
-        borderTopRightRadius: 10,
-        border: '2px solid #0D7377',
-    },
-    
-    sitefont:{
-        color: "#0D7377",
-        textAlign: 'center',
-        padding: 5,
-    
-    },
-    
-    buttonlinks:{
-        color:"#32E0C4",
-        textDecoration: 'none', 
-        
-    },
-    
-    buttons: {
-        backgroundColor: "#0D7377",
-        borderRadius: 5,
-        paddingTop: 10,
-        paddingBottom: 10,
-        paddingLeft: 8,
-        paddingRight: 8,
-        border: 0,
-        marginLeft: '45%',
-        marginTop: 5,
-        marginBottom: 10,
-    },
-    
-    border: {
-        border: '2px solid #0D7377',
-        borderBottomLeftRadius: 10,
-        borderBottomRightRadius: 10,
-        width: '70%',
-        marginLeft: '15%',
-        marginRight: '15%',
-    },
-    
-}));
+            // Check to see if user exists in DB; if not, create new file for them
+            userinfo.get().then(function(doc) {
+                if (!doc.exists) {
+                    db.collection("Users").doc(uid).set({
+                        name: user.displayName,
+                        email: user.email,
+                        planningRank: 'Beginner',
+                        designRank: 'Beginner',
+                        implementationRank: 'Beginner',
+                        testingDevRank: 'Beginner',
+                        maintenanceRank: 'Beginner',
+                        })
+                    }})
 
-const classes = useStyles();
+                    // Update state
+                    setUserLogIn(isLoggedIn = true)
+                    setUserId(userId = uid)
+
+                } else {
+                    setUserLogIn(isLoggedIn = false)
+                    setUserId(userId = '000XXX')
+                } 
+    })
+    
     return (
-    
-    <div className={classes.app}>
-
-        <NavBar />
-   
-        <div>
-            <img className={classes.photo} src={onlineclass} />
-        </div>
+        <BrowserRouter>
+            <Switch>
+                <Route exact path="/" component={Home} />
+                {/* Don't neeed to change this, since it should only be accessable when not logged in */}
+                <Route path="/Login" component={Login} /> 
+                <Route path="/Home" render={(props) => < Home {...props} isLoggedIn={isLoggedIn} />} />
+                
+                <Route path="/LearnMore" render={(props) => < LearnMore {...props} isLoggedIn={isLoggedIn} />} />
+                <Route path="/Dashboard" render={(props) => < Dashboard {...props} isLoggedIn={isLoggedIn} user={userId}  />} />
+            </Switch>
+        </BrowserRouter>
         
-        <div className={classes.border}>    
-        
-        <div className={classes.sitefont}>
-            Delve is designed to teach you the web development skills you need by learning what you already know. We have gathered resources all across the web to teach what you really need to know so you don’t have to. You’ll choose what skills you want to know, and we’ll give you the resources to learn them.
-        </div>
-        
-        
-        <div>
-            <button class="mdc-button mdc-button--touch" className={classes.buttons}>
-                <div class="mdc-button__ripple"></div>
-                    <Link to="/LearnMore" className={classes.buttonlinks}><span class="mdc-button__label">Learn More</span></Link>
-                <div class="mdc-button__touch"></div>
-            </button>
-            
-        </div>
-        </div>
-        <div>
-            <img className={classes.photo} src={onlineclass2} />
-        </div>
-   
-        <div className={classes.border}>
-            
-        <div className={classes.sitefont}>        
-            The path to gaining technical skills starts here. Take your first step to learning web development.
-        </div>
-        
-        
-        <div class="mdc-touch-target-wrapper">
-            <button class="mdc-button mdc-button--touch" className={classes.buttons}>
-                <div class="mdc-button__ripple"></div>
-                <Link to="/Login" className={classes.buttonlinks}><span class="mdc-button__label">Sign Up</span></Link>
-                <div class="mdc-button__touch"></div>
-            </button>
-        </div>
-        
-        </div>
-        
-        
-        <div className={classes.footer}>
-            Copyright: Allison Broski, Shelby McKay, Maurice Fuentes, Timothy Carpenter, Tanner Porteous
-            <p>Oakland University</p>
-        
-        </div>
-       
-   
-    </div>
-    );
-
+    )  
 }
 
 export default App;
