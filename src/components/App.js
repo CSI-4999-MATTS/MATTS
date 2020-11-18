@@ -4,7 +4,8 @@ import { firebaseApp } from '../firebase/config';
 import Login from "../components/Login";
 import LearnMore from "../components/LearnMore";
 import Dashboard from "../components/Dashboard";
-import Home from "../components/Home"
+import Home from "../components/Home";
+import QuizStart from "../components/skills_quiz/QuizStart";
 import { db } from '../firebase/config';
 
 
@@ -53,6 +54,7 @@ function App() {
                 
                 <Route path="/LearnMore" render={(props) => < LearnMore {...props} isLoggedIn={isLoggedIn} />} />
                 <Route path="/Dashboard" render={(props) => < Dashboard {...props} isLoggedIn={isLoggedIn} user={userId}  />} />
+                <Route path="/Quiz" render={(props) => < QuizStart {...props} isLoggedIn={isLoggedIn} />} />
             </Switch>
         </BrowserRouter>
         

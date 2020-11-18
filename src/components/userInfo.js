@@ -1,7 +1,7 @@
 import React from 'react'
 import '../stylesheets/App.css';
 import { makeStyles } from '@material-ui/core/styles';
-import defaultprofile from './defaultprofile.png';
+import defaultprofile from '../../public/defaultprofile.png';
 import { Link } from "react-router-dom";
 import LearningStep from '../components/LearningStep';
 

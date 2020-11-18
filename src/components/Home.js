@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import onlineclass from './onlineclass.jpg';
-import onlineclass2 from './onlineclass2.jpg';
+import onlineclass from '../../public/onlineclass.jpg';
+import onlineclass2 from '../../public/onlineclass2.jpg';
 import { Link } from "react-router-dom";
 import NavBar from './NavBar';
 import DashboardButton from './DashboardButton.js';

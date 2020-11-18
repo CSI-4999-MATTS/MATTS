@@ -1,6 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import { Link } from 'react-router-dom';
+import { Button } from '@material-ui/core';
 
 function LearningStep(props) {
 
@@ -24,6 +26,21 @@ function LearningStep(props) {
             marginRight: 25,
             marginBottom: 25,
         },
+
+        link: {
+            color: "#32E0C4",
+            textDecoration: "none",
+        },
+
+        menuButton: {
+            marginRight: theme.spacing(5),
+            color: "#32E0C4",
+            "&:hover": {
+              backgroundColor: "#32E0C4",
+              color: "#0D7377",
+            },
+        },
+
     }));
     const classes = useStyles();
 
@@ -46,6 +63,9 @@ function LearningStep(props) {
         <div>
             <p className={classes.progressinfo}>{title} - {rank}</p>
             <LinearProgress variant="determinate" className={classes.progressbar} value={percentageCalculator(rank)} />
+            <Link to="/Quiz" className={classes.link}>
+                <Button className={classes.menuButton}>Start Quiz</Button>
+            </Link> 
         </div>
     )
 }
