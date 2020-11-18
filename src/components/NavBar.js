@@ -7,7 +7,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import { Link } from "react-router-dom";
 import LogInButton from "../components/LogInButton";
 import LogoutButton from "./LogoutButton.js";
-import delve from "../../public/Delve.png";
+import delve from "../images/Delve.png";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import { Button } from "@material-ui/core";

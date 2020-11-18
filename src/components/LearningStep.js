@@ -63,7 +63,7 @@ function LearningStep(props) {
         <div>
             <p className={classes.progressinfo}>{title} - {rank}</p>
             <LinearProgress variant="determinate" className={classes.progressbar} value={percentageCalculator(rank)} />
-            <Link to="/Quiz" className={classes.link}>
+            <Link to={{pathname: "/Quiz", state: {track: title}}} className={classes.link}>
                 <Button className={classes.menuButton}>Start Quiz</Button>
             </Link> 
         </div>
