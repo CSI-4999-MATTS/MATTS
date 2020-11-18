@@ -1,5 +1,6 @@
 import React from 'react'
 import NavBar from '../NavBar';
+import QuizQuestion from '../skills_quiz/QuizQuestion';
 
 // We're using a class component here, because they tend to make dealing with state a little easier.
 class QuizStart extends React.Component {
@@ -12,19 +13,29 @@ class QuizStart extends React.Component {
     }
 
     componentDidMount () {
-        const { track } = this.props.location.state
+        const { track } = this.props.location.state;
         this.setState({
             track: track
-        })
+        });
+
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick() {
+        console.log('Clicked!')
+        this.setState(state => ({
+            progress: 1
+        }));
     }
 
 
     render() {
-        let button;
+        let display;
+
         if (this.state.progress === 0){
-            button = "Start";
+            display = <button onClick={this.handleClick}>Start</button>
         } else {
-            button = "Next";
+            display = <QuizQuestion />
         }
 
         return (
@@ -33,7 +44,7 @@ class QuizStart extends React.Component {
                 <h1>{this.state.track} Quiz</h1>
                 {/* Would want a conditionally rendering component here that will render question text, or not show up at all? */}
                 {/* Do ideally need a start button */}
-                <button>{button}</button>
+                {display}
 
             </div>
         )
