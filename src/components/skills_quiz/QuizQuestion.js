@@ -1,5 +1,6 @@
 import React from 'react';
 import { db } from '../../firebase/config';
+import { questionConverter } from './QuestionClass';
 
 class QuizQuestion extends React.Component {
     constructor(props){
@@ -19,13 +20,19 @@ class QuizQuestion extends React.Component {
             collection = this.props.track
         }
 
-        var questionSet = db.collection('Quizzes').doc(collection).collection('Questions')
+        var questionSet = db.collection('Quizzes').doc(collection).collection('Questions').doc('Q1')
 
-        questionSet.get().then(function(response) {
-            response.forEach(document => {
-                // May make sense to make response a custom object?
-                console.log(document.data())
-            })
+        questionSet.withConverter(questionConverter).get().then(function(response) {
+            if (response.exists) {
+                var question = response.data();
+                question.toString();
+            } else {
+                console.log('Something went wrong');
+            }
+            // response.forEach(document => {
+            //     // May make sense to make response a custom object?
+            //     console.log(document.data())
+            // })
         })
 
     }
