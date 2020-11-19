@@ -23,13 +23,9 @@ class QuizQuestion extends React.Component {
 
         questionSet.get().then(function(response) {
             response.forEach(document => {
+                // May make sense to make response a custom object?
                 console.log(document.data())
             })
-            // if (doc.exists) {
-            //     console.log('Document data: ', doc.data())
-            // } else {
-            //     console.log('Something\'s off here')
-            // }
         })
 
     }
