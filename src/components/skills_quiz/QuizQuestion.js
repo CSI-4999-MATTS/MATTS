@@ -22,6 +22,8 @@ class QuizQuestion extends React.Component {
 
         var questionSet = db.collection('Quizzes').doc(collection).collection('Questions')
 
+        // We use a converter object to transform the incoming question object from Firestore into a custom Question object, which you can see in QuestionClass.js
+        // Idea would be to create methods in QuestionClass to handle to comparison and tallying of each question object.
         questionSet.withConverter(questionConverter).get().then(function(response) {
                 response.forEach(document => {
                     var question = document.data();
