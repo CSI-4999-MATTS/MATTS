@@ -20,21 +20,14 @@ class QuizQuestion extends React.Component {
             collection = this.props.track
         }
 
-        var questionSet = db.collection('Quizzes').doc(collection).collection('Questions').doc('Q1')
+        var questionSet = db.collection('Quizzes').doc(collection).collection('Questions')
 
         questionSet.withConverter(questionConverter).get().then(function(response) {
-            if (response.exists) {
-                var question = response.data();
-                question.toString();
-            } else {
-                console.log('Something went wrong');
-            }
-            // response.forEach(document => {
-            //     // May make sense to make response a custom object?
-            //     console.log(document.data())
-            // })
-        })
-
+                response.forEach(document => {
+                    var question = document.data();
+                    question.toString();
+                })
+            })
     }
 
     render(){
