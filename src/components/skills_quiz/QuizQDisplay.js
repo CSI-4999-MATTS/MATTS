@@ -1,26 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { db } from '../../firebase/config';
 import { questionConverter } from './QuestionClass';
 
-class QuizQuestion extends React.Component {
+function QuizQDisplay(props) {
 
-    constructor(props){
-        super();
-        this.state = {
-            points: 0,
-            qNum: 0,
-        };
-    }
+    var questions = [];
+    var collection;
 
-    componentDidMount(){
-        var collection;
-        // Because firestore keeps the testing and deployment questions under a different heading, we need to fix things up a bit
-        if (this.props.track === 'Testing & Deployment') {
+    useEffect(() => {
+        if (props.track === 'Testing & Deployment') {
             collection = 'Test_Deploy'
         } else {
-            collection = this.props.track
+            collection = props.track
         }
 
+    }, [props.track]);
+
+    retrieveQuestions(collection);
+
+    function retrieveQuestions(collection){
         var questionSet = db.collection('Quizzes').doc(collection).collection('Questions')
 
         // We use a converter object to transform the incoming question object from Firestore into a custom Question object, which you can see in QuestionClass.js
@@ -28,18 +26,21 @@ class QuizQuestion extends React.Component {
         questionSet.withConverter(questionConverter).get().then(function(response) {
                 response.forEach(document => {
                     var question = document.data();
+                    // running asynch - need to address
+                    console.log('Question in')
+                    questions.push(question)
                 })
-            })
+        })
     }
 
-    render(){
-        return (
-            <div>
-                <h1>Hello sweetie</h1>
-                <h2>{this.questions}</h2>
-            </div> 
-        )
-    }
+    return (
+        <div>
+            <h1>Hello sweetie</h1>
+            <h2>NEW!</h2>
+            <ol>
+            </ol>
+        </div> 
+    )
 }
 
-export default QuizQuestion;
+export default QuizQDisplay;
