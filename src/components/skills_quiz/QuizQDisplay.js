@@ -1,44 +1,46 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { db } from '../../firebase/config';
 import { questionConverter } from './QuestionClass';
 
 function QuizQDisplay(props) {
 
     var questions = [];
-    var collection;
+    var collection = useRef('Planning');
+    var [loading, setLoading] = useState(true);  
+
 
     useEffect(() => {
         if (props.track === 'Testing & Deployment') {
-            collection = 'Test_Deploy'
+            collection.current = 'Test_Deploy';
         } else {
-            collection = props.track
+            collection.current = props.track;
         }
 
-    }, [props.track]);
+        if(questions.length !== 0){
+            setLoading(false)
+        } else {
+            var questionSet = db.collection('Quizzes').doc(collection.current).collection('Questions')
 
-    retrieveQuestions(collection);
+            // We use a converter object to transform the incoming question object from Firestore into a custom Question object, which you can see in QuestionClass.js
+            // Idea would be to create methods in QuestionClass to handle to comparison and tallying of each question object.
+            questionSet.withConverter(questionConverter).get().then(function(response) {
+                    response.forEach(document => {
+                        var question = document.data();
+                        // running asynch - need to address
+                        console.log('Question in')
+                        questions.push(question)
+                    })
+            })
+            setLoading(false)
+        }
 
-    function retrieveQuestions(collection){
-        var questionSet = db.collection('Quizzes').doc(collection).collection('Questions')
+    }, [props.track, questions])
 
-        // We use a converter object to transform the incoming question object from Firestore into a custom Question object, which you can see in QuestionClass.js
-        // Idea would be to create methods in QuestionClass to handle to comparison and tallying of each question object.
-        questionSet.withConverter(questionConverter).get().then(function(response) {
-                response.forEach(document => {
-                    var question = document.data();
-                    // running asynch - need to address
-                    console.log('Question in')
-                    questions.push(question)
-                })
-        })
-    }
 
     return (
         <div>
-            <h1>Hello sweetie</h1>
-            <h2>NEW!</h2>
-            <ol>
-            </ol>
+            {loading ? <h2>We're waiting</h2> : 
+            <h2>We're done</h2>}
         </div> 
     )
 }
