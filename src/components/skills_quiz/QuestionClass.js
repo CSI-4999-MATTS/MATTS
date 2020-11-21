@@ -9,6 +9,8 @@ class Question {
         console.log('Question text: ', this.q_text, '\nQuestion options: ', this.q_options,
         '\nQuestion answer: ', this.q_answer)
     }
+
+    
 }
 
 export var questionConverter = {

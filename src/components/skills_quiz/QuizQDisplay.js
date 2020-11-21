@@ -1,46 +1,24 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { db } from '../../firebase/config';
-import { questionConverter } from './QuestionClass';
 
 function QuizQDisplay(props) {
 
-    var questions = [];
-    var collection = useRef('Planning');
-    var [loading, setLoading] = useState(true);  
+    /** Maybe this page only displays the question text, then calls on the Quiz Class methods to perform computation
+     * <h1> Question text </h1>
+     * <ol> Options </ol>
+     * <li onClick={question.computeScore()} />
+     * 
+     * Will get in full question info
+     */
 
-
-    useEffect(() => {
-        if (props.track === 'Testing & Deployment') {
-            collection.current = 'Test_Deploy';
-        } else {
-            collection.current = props.track;
-        }
-
-        if(questions.length !== 0){
-            setLoading(false)
-        } else {
-            var questionSet = db.collection('Quizzes').doc(collection.current).collection('Questions')
-
-            // We use a converter object to transform the incoming question object from Firestore into a custom Question object, which you can see in QuestionClass.js
-            // Idea would be to create methods in QuestionClass to handle to comparison and tallying of each question object.
-            questionSet.withConverter(questionConverter).get().then(function(response) {
-                    response.forEach(document => {
-                        var question = document.data();
-                        // running asynch - need to address
-                        console.log('Question in')
-                        questions.push(question)
-                    })
-            })
-            setLoading(false)
-        }
-
-    }, [props.track, questions])
-
+    var help = {...props.qN}
+    console.log(help.q_text)
+    // console.log('q an: ', props.qN.q_answer)
+    // console.log('q_opt:', props.qN.q_options)
+    // console.log('q_text: ', props.qN.q_text)
 
     return (
         <div>
-            {loading ? <h2>We're waiting</h2> : 
-            <h2>We're done</h2>}
+           <h1>Question: {help.q_text}</h1>
         </div> 
     )
 }

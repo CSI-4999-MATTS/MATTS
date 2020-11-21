@@ -1,6 +1,6 @@
 import React from 'react'
 import NavBar from '../NavBar';
-import QuizQDisplay from './QuizQDisplay';
+import QuestionIterator from './QuestionIterator';
 
 // We're using a class component here, because they tend to make dealing with state a little easier.
 class QuizStart extends React.Component {
@@ -22,7 +22,6 @@ class QuizStart extends React.Component {
     }
 
     handleClick() {
-        console.log('Clicked!')
         this.setState(state => ({
             isHome: false
         }));
@@ -31,11 +30,11 @@ class QuizStart extends React.Component {
 
     render() {
         let display;
-
+        // Send to QuestionIterator in order to fetch questions from DB. We'll do logic in QuestionIterator, and display in QuizQDsplay
         if (this.state.isHome){
             display = <button onClick={this.handleClick}>Start</button>
         } else {
-            display = <QuizQDisplay track={this.state.track}/>
+            display = <QuestionIterator track={this.state.track}/>
         }
 
         return (
