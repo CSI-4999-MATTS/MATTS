@@ -9,6 +9,7 @@ function QuestionIterator(props){
     var [loading, setLoading] = useState(true);
     var collection = useRef('Planning'); 
     var [questionNum, setQuestionNum] = useState(0);
+    var advanceText = useRef('Next');
 
     // Fetches questions from DB
     useEffect(() => {
@@ -33,9 +34,15 @@ function QuestionIterator(props){
         }
     }, [props.track, questions.length]);
 
+    // Advances each question by setting questionNum to the next value
     function advanceQ(){
         let last = questionNum
-        console.log('Last', last)
+        // If on the last question, display 'End'
+        if (last === questions.length - 2) {
+            console.log('Enter end')
+            advanceText.current = 'End';
+        }
+        setQuestionNum(last+1)
     }
     
     return (
@@ -45,8 +52,9 @@ function QuestionIterator(props){
             <div>
                 {/* On click, advance question */}
                 <QuizQDisplay qN={questions[questionNum]}/>
-                <button onClick={() => advanceQ()}>Next</button>
+                <button onClick={() => advanceQ()}>{advanceText.current}</button>
             </div>}
+            {/* Add element which renders when some conditional state is achieved. */}
         </div>
     )
 
