@@ -1,6 +1,8 @@
 import React from 'react'
 import NavBar from '../NavBar';
 import QuestionIterator from './QuestionIterator';
+import { db } from '../../firebase/config';
+import { questionConverter } from './QuestionClass';
 
 // We're using a class component here, because they tend to make dealing with state a little easier.
 class QuizStart extends React.Component {
@@ -9,6 +11,8 @@ class QuizStart extends React.Component {
         this.state = {
             track: 'Planning',
             isHome: true,
+            questions: [],
+            isLoading: true
         };
     }
 
@@ -19,6 +23,35 @@ class QuizStart extends React.Component {
         });
 
         this.handleClick = this.handleClick.bind(this);
+        this.loadData(track)
+    }
+
+    // Fetch data from this step instead of the QuestionIterator. Otherwise, we'd have to do a whole bunch of checks that keep the code messy
+    loadData(track) {
+        console.log('Enter in with: ', track)
+        var collection;
+
+        if (track === 'Testing & Deployment') {
+            collection = 'Test_Deploy';
+        } else {
+            collection = track;
+        }
+
+        if (this.state.questions.length === 0){
+            const questionSet = db.collection('Quizzes').doc(collection).collection('Questions')
+            var tempArray = [];
+
+            questionSet.withConverter(questionConverter).get().then(function(response) {
+                response.forEach(document => {
+                    var question = document.data()
+                    tempArray.push(question)
+                })
+            })
+            this.setState({
+                questions: tempArray,
+                isLoading: false
+            })
+        }
     }
 
     handleClick() {
@@ -31,10 +64,11 @@ class QuizStart extends React.Component {
     render() {
         let display;
         // Send to QuestionIterator in order to fetch questions from DB. We'll do logic in QuestionIterator, and display in QuizQDsplay
-        if (this.state.isHome){
-            display = <button onClick={this.handleClick}>Start</button>
+        // switch around to make sure all questions are in and is no longer .isHome() before sending in <QuestionIterator>
+        if (!this.state.isHome && !this.state.isLoading) {
+            display = <QuestionIterator questions={this.state.questions}/>
         } else {
-            display = <QuestionIterator track={this.state.track}/>
+            display = <button onClick={this.handleClick}>Start</button>
         }
 
         return (
