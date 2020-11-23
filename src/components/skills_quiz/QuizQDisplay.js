@@ -17,13 +17,13 @@ function QuizQDisplay(props) {
     return (
         <div>
            <h1>Question: {help.q_text}</h1>
-           <h2>{help.q_options[0]}</h2>
-           {/* {help.q_options.map(function(option, i){
-               return <label key={option[i]}>
-                        <input type="radio" key={option[i]}/>
-                        {option[i]}
-                    </label>
-           })} */}
+           {/* <h2>{help.q_options[0]}</h2> */}
+           {help.q_options.map(function(option){
+               return <label key={option}>
+                        <input type="radio" name="selections" key={option} value={option}/>
+                        {option}
+                    <br/></label>
+           })}
         </div> 
     )
 }

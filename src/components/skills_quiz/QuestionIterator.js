@@ -1,6 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { db } from '../../firebase/config';
-import { questionConverter } from './QuestionClass';
+import React, { useState, useRef } from 'react';
 import QuizQDisplay from './QuizQDisplay';
 
 function QuestionIterator(props){
@@ -27,7 +25,6 @@ function QuestionIterator(props){
         <div>
             <div>
                 {/* On click, advance question */}
-                <h1>HIIIIII</h1>
                 <QuizQDisplay qN={questions[questionNum]}/>
                 <button onClick={() => advanceQ()}>{advanceText.current}</button>
             </div>
