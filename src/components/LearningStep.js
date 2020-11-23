@@ -1,14 +1,17 @@
-import React from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
-import { db } from '../../firebase/config';
+import { db } from '../firebase/config';
+import { SignalCellularConnectedNoInternet0BarSharp } from '@material-ui/icons';
 
 
 function LearningStep(props) {
 
     var rank = props.rank;
     var title = props.title;
+    const [count, setCount] = useState(0);
 
+    
     const useStyles = makeStyles((theme) => ({
         progressinfo: {
             color: "#0D7377", 
@@ -31,7 +34,21 @@ function LearningStep(props) {
 
 
     // Fetch articles here, using title as the attribute to sort by
- 
+    db.collection('Articles')
+    .get()
+    .then( snapshot => {
+        const articles = []
+        snapshot.forEach( doc => {
+            const data = doc.data()
+            console.log(doc.data())
+            articles.push(data)
+            console.log(articles)
+        })
+        this.setCount({ articles: articles})
+        console.log(snapshot)
+    })
+    .catch( error => console.log(error))
+    
 
     function percentageCalculator (rank) {
         switch (rank){
@@ -47,12 +64,14 @@ function LearningStep(props) {
                 return 0;
         }
     };
-
+    
     return (
+        
         <div>
             <p className={classes.progressinfo}>{title} - {rank}</p>
             <LinearProgress variant="determinate" className={classes.progressbar} value={percentageCalculator(rank)} />
             Hello write here
+            {count}
         </div>
     )
 }
