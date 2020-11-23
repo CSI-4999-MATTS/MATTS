@@ -76,7 +76,7 @@ class QuizStart extends React.Component {
                 
             
                 <div style={{border: '2px solid #0D7377', width: '40%', marginLeft: '30%', marginRight: '30%', borderRadius: 10, backgroundColor: "#0D7377", marginTop: 200, paddingTop: 20, paddingBottom: 25}}>
-                    <h1 style={{color: "black", textAlign: 'center'}}>{this.state.track} Quiz</h1>
+                    <h1 style={{color: "#EEEEEE", textAlign: 'center'}}>{this.state.track} Quiz</h1>
                     {display}
                 </div>
             
