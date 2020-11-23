@@ -63,8 +63,6 @@ class QuizStart extends React.Component {
 
     render() {
         let display;
-        // Send to QuestionIterator in order to fetch questions from DB. We'll do logic in QuestionIterator, and display in QuizQDsplay
-        // switch around to make sure all questions are in and is no longer .isHome() before sending in <QuestionIterator>
         if (!this.state.isHome && !this.state.isLoading) {
             display = <QuestionIterator questions={this.state.questions}/>
         } else {
