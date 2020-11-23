@@ -47,6 +47,16 @@ function Dashboard(props) {
             })
     }, [props.user]);
 
+    useEffect(() => {
+        db.collection('Articles').doc(props.articles).onSnapshot({includeMetadataChanges: true},
+            function(article) {
+                dataDash.current = article.data()
+                if (dataDash.current !== undefined){
+                    setLoading(false)
+                }
+            })
+    }, [props.articles]);
+
     return (
         <div className={classes.app}>
 

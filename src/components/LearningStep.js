@@ -46,6 +46,7 @@ function LearningStep(props) {
         <div>
             <p className={classes.progressinfo}>{title} - {rank}</p>
             <LinearProgress variant="determinate" className={classes.progressbar} value={percentageCalculator(rank)} />
+            Hello write here
         </div>
     )
 }
