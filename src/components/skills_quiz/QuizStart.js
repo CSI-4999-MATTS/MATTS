@@ -66,8 +66,10 @@ class QuizStart extends React.Component {
         if (!this.state.isHome && !this.state.isLoading) {
             display = <QuestionIterator questions={this.state.questions}/>
         } else {
-            display = <button onClick={this.handleClick} style={{marginLeft: '44%', backgroundColor: "#32E0C4",
-            borderRadius: 5, paddingTop: 10, paddingBottom: 10, paddingLeft: 20, paddingRight: 20, border: 0, marginTop: 5, marginBottom: 10, color: "#0D7377"}}>Start</button>
+            display = <button onClick={this.handleClick} 
+                        style={{marginLeft: '44%', backgroundColor: "#32E0C4",
+                                borderRadius: 5, paddingTop: 10, paddingBottom: 10, paddingLeft: 20, paddingRight: 20, border: 0, marginTop: 5, marginBottom: 10, color: "#0D7377"}}
+                        >Start</button>
         }
 
         return (

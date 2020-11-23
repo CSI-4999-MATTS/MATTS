@@ -10,6 +10,14 @@ class Question {
         '\nQuestion answer: ', this.q_answer)
     }
 
+    isCorrectAnswer(userResponse){
+        if (userResponse === this.q_answer){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     
 }
 
