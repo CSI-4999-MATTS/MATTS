@@ -26,7 +26,7 @@ function QuestionIterator(props){
             <div>
                 {/* On click, advance question */}
                 <QuizQDisplay qN={questions[questionNum]}/>
-                <button onClick={() => advanceQ()}>{advanceText.current}</button>
+                <button style={{marginLeft: '44%', backgroundColor: "#32E0C4", borderRadius: 5, paddingTop: 10, paddingBottom: 10, paddingLeft: 20, paddingRight: 20, border: 0, marginTop: 5, marginBottom: 10, color: "#0D7377"}} onClick={() => advanceQ()}>{advanceText.current}</button>
             </div>
             {/* Add element which renders when some conditional state is achieved. */}
         </div>

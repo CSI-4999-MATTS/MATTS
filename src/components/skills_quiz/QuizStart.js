@@ -66,14 +66,25 @@ class QuizStart extends React.Component {
         if (!this.state.isHome && !this.state.isLoading) {
             display = <QuestionIterator questions={this.state.questions}/>
         } else {
-            display = <button onClick={this.handleClick}>Start</button>
+            display = <button onClick={this.handleClick} style={{marginLeft: '44%', backgroundColor: "#32E0C4",
+            borderRadius: 5, paddingTop: 10, paddingBottom: 10, paddingLeft: 20, paddingRight: 20, border: 0, marginTop: 5, marginBottom: 10, color: "#0D7377"}}>Start</button>
         }
 
         return (
-            <div>
+            <div style={{backgroundColor: "#EEEEEE"}}>
                 <NavBar loggedIn={this.props.isLoggedIn}/>
-                <h1>{this.state.track} Quiz</h1>
-                {display}
+                
+            
+                <div style={{border: '2px solid #0D7377', width: '40%', marginLeft: '30%', marginRight: '30%', borderRadius: 10, backgroundColor: "#0D7377", marginTop: 200, paddingTop: 20, paddingBottom: 25}}>
+                    <h1 style={{color: "black", textAlign: 'center'}}>{this.state.track} Quiz</h1>
+                    {display}
+                </div>
+            
+                <div style={{textAlign:'center', height: 75, opacity: .3, fontSize: 10, marginTop: 400, bottom: 0, display: 'block', width: '100%',}}>
+                Copyright: Allison Broski, Shelby McKay, Maurice Fuentes, Timothy Carpenter, Tanner Porteous
+                <p>Oakland University</p>
+            
+            </div>
             </div>
         )
     }
