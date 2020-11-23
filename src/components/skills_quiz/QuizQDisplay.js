@@ -6,6 +6,10 @@ function QuizQDisplay(props) {
     var help = {...props.qN}
     console.log(help.q_options)
 
+    function sendResult(){
+
+    }
+
     /** Maybe this page only displays the question text, then calls on the Quiz Class methods to perform computation
      * <h1> Question text </h1>
      * <ol> Options </ol>
@@ -19,7 +23,7 @@ function QuizQDisplay(props) {
            <h3 style={{color: "#32E0C4", paddingLeft: 15}}>Question: {help.q_text}</h3>
            {help.q_options.map(function(option){
                return <label key={option}>
-                        <input type="radio" name="selections" key={option} value={option}/>
+                        <input type="radio" name="selections" key={option} />
                         {option}
                     <br/></label>
            })}
