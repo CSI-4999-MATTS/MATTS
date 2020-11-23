@@ -17,7 +17,6 @@ function QuizQDisplay(props) {
     return (
         <div>
            <h1>Question: {help.q_text}</h1>
-           {/* <h2>{help.q_options[0]}</h2> */}
            {help.q_options.map(function(option){
                return <label key={option}>
                         <input type="radio" name="selections" key={option} value={option}/>

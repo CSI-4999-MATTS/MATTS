@@ -70,8 +70,9 @@ function NavBar(props) {
   const StyledMenu = withStyles({
     paper: {
       border: "5px solid #0D7377",
-      width: "500px",
+      width: "300px",
       height: "100%",
+      borderRadius: 10,
     },
   })((props) => (
     <Menu
@@ -91,14 +92,14 @@ function NavBar(props) {
 
   const StyledMenuItem = withStyles((theme) => ({
     root: {
-      color: "black",
+      color: "#0D7377",
       textAlign: "center",
       paddingTop: "20px",
       paddingBottom: "20px",
-      "&:focus": {
+      "&:hover": {
         backgroundColor: "#0D7377",
         "& .MuiListItemIcon-root, & .MuiListItemText-primary": {
-          color: "white",
+          color: "#32E0C4",
         },
       },
     },
@@ -133,7 +134,7 @@ function NavBar(props) {
             onClose={handleClose}
           >
             <StyledMenuItem>
-              <ListItemText primary="Planning" />
+              <ListItemText primary="Primary" />
             </StyledMenuItem>
             <StyledMenuItem>
               <ListItemText primary="Design" />
