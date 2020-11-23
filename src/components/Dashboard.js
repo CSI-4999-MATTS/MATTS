@@ -33,30 +33,6 @@ function Dashboard(props) {
 
     const classes = useStyles();
 
-    useEffect(() => {
-        // Listens for metadata changes - i.e. updates to documents and collections themselves, not just attributes
-        db.collection('Users').doc(props.user).onSnapshot({includeMetadataChanges: true}, 
-            // userInfo is the actual document with ID props.user
-            function(userInfo) {
-                // Pulls user info out of DB
-                dataDash.current = userInfo.data()
-                // Only show profile info once data is properly retrieved - solution to asynch behavior
-                if (dataDash.current !== undefined){
-                    setLoading(false)
-                }
-            })
-    }, [props.user]);
-
-    useEffect(() => {
-        db.collection('Articles').doc(props.articles).onSnapshot({includeMetadataChanges: true},
-            function(article) {
-                dataDash.current = article.data()
-                if (dataDash.current !== undefined){
-                    setLoading(false)
-                }
-            })
-    }, [props.articles]);
-
     return (
         <div className={classes.app}>
 

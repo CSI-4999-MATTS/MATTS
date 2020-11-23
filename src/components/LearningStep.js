@@ -1,6 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import { db } from '../../firebase/config';
+
 
 function LearningStep(props) {
 
@@ -26,6 +28,10 @@ function LearningStep(props) {
         },
     }));
     const classes = useStyles();
+
+
+    // Fetch articles here, using title as the attribute to sort by
+ 
 
     function percentageCalculator (rank) {
         switch (rank){
