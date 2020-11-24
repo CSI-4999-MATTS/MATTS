@@ -26,6 +26,12 @@ class QuizStart extends React.Component {
         this.loadData(track)
     }
 
+    componentWillUnmount() {
+        this.setState({
+            questions: []
+        });
+    }
+
     // Fetch data from this step instead of the QuestionIterator. Otherwise, we'd have to do a whole bunch of checks that keep the code messy
     loadData(track) {
         console.log('Enter in with: ', track)
