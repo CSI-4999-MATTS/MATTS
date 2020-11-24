@@ -142,16 +142,16 @@ function NavBar(props) {
               <Link to={`/Articles/Planning`}><ListItemText primary="Planning"/></Link>
             </StyledMenuItem>
             <StyledMenuItem>
-              <ListItemText primary="Design" onClick={(()=>LaunchPreview("Design"))}/>
+              <Link to={`/Articles/Design`}><ListItemText primary="Design"/></Link>
             </StyledMenuItem>
             <StyledMenuItem>
-              <ListItemText primary="Implementation" onClick={(()=>LaunchPreview("Implementation"))}/>
+              <Link to={`/Articles/Implementation`}><ListItemText primary="Implementation"/></Link>
             </StyledMenuItem>
             <StyledMenuItem>
-              <ListItemText primary="Testing and Deployment" onClick={(()=>LaunchPreview("Testing and Deployment"))}/>
+              <Link to={`/Articles/Test&Deploy`}><ListItemText primary="Testing and Deployment"/></Link>
             </StyledMenuItem>
             <StyledMenuItem>
-              <ListItemText primary="Maintenance" onClick={(()=>LaunchPreview("Maintenance"))}/>
+              <Link to={`/Articles/Maintenance`}><ListItemText primary="Maintenance"/></Link>
             </StyledMenuItem>
           </StyledMenu>
         </div>

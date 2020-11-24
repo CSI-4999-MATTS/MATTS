@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import HomeButton from './HomeButton.js';
 
 
-function FullArticleView(props) {
+function FullArticleView(props, {match, location}) {
 
 const useStyles = makeStyles((theme) => ({
     
@@ -96,13 +96,15 @@ const useStyles = makeStyles((theme) => ({
 
 const classes = useStyles();
 
+    console.log(props.match.params.track)
+
     return (
     <div className={classes.app}>
 
         <NavBar loggedIn={props.isLoggedIn} />
 
         <div className={classes.title}>
-            <p>Design</p>
+            <p>{props.match.params.track}</p>
         </div>
         
         <div className={classes.page}>
