@@ -14,6 +14,7 @@ function QuestionIterator(props){
     const questions = props.questions;
     const history = useHistory();
 
+    console.log('Question num:', questionNum);
 
     function questionNextSteps(){
         calculateResults();

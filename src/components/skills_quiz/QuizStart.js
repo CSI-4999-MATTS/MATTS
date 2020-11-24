@@ -28,7 +28,9 @@ class QuizStart extends React.Component {
 
     componentWillUnmount() {
         this.setState({
-            questions: []
+            questions: [],
+            isHome: true,
+            isLoading: true
         });
     }
 
