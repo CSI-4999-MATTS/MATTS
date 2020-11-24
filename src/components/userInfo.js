@@ -168,7 +168,7 @@ function UserInfo(props) {
                     )}
                 </ul>
                 <LearningStep rank={designRank} title={'Design'} />
-                <div class="scrollmenu">
+                <div className="scrollmenu">
                     {articles.map((articles) =>
                         <div key={articles.id}>
                             <a href={articles.URL}>{articles.Title}</a>

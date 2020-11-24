@@ -7,6 +7,7 @@ import Dashboard from "../components/Dashboard";
 import Home from "../components/Home";
 import FullArticleView from "./FullArticleView";
 import QuizStart from "../components/skills_quiz/QuizStart";
+import QuizFinish from "../components/skills_quiz/QuizFinish";
 import { db } from '../firebase/config';
 
 
@@ -55,6 +56,7 @@ function App() {
                 <Route path="/LearnMore" render={(props) => < LearnMore {...props} isLoggedIn={isLoggedIn} />} />
                 <Route path="/Dashboard" render={(props) => < Dashboard {...props} isLoggedIn={isLoggedIn} user={userId}  />} />
                 <Route path="/Quiz" render={(props) => < QuizStart {...props} isLoggedIn={isLoggedIn} />} />
+                <Route path="/QuizFinish" render={(props) => < QuizFinish {...props} isLoggedIn={isLoggedIn} />} />
                 <Route path="/Articles/:track" render={(props) => < FullArticleView {...props} isLoggedIn={isLoggedIn} />} />
             </Switch>
         </BrowserRouter>

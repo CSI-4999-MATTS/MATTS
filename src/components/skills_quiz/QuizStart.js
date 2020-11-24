@@ -70,7 +70,7 @@ class QuizStart extends React.Component {
     render() {
         let display;
         if (!this.state.isHome && !this.state.isLoading) {
-            display = <QuestionIterator questions={this.state.questions}/>
+            display = <QuestionIterator questions={this.state.questions} track={this.state.track} />
         } else {
             display = <button onClick={this.handleClick} 
                         style={{marginLeft: '44%', backgroundColor: "#32E0C4",

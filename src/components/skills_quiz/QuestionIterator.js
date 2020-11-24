@@ -6,7 +6,8 @@ import QuizQDisplay from './QuizQDisplay';
 function QuestionIterator(props){
 
     var [questionNum, setQuestionNum] = useState(0);
-    var advanceText = useRef('Next');
+    // var advanceText = useRef('Next');
+    var [end, setEnd] = useState(false);
     var questionResponse = useRef('');
     var userTotal = useRef(0);
     var totalTotal = useRef(0);
@@ -15,35 +16,29 @@ function QuestionIterator(props){
 
 
     function questionNextSteps(){
-
         calculateResults();
+        advanceQ();
+    }
 
-        if (advanceText.current === 'End'){
-            advanceQ(true)
-            history.push('/Quiz');
-        } else {
-            console.log('Advance')
-            advanceQ();
-        }
+    function finalStep(){
+        calculateResults();
+        history.push('/QuizFinish', [userTotal, totalTotal, props.track])
     }
 
     // Advances each question by setting questionNum to the next value
-    function advanceQ(conditionalStop=false){
-        if (conditionalStop){
-            console.log('Conditional stop')
-            // Do nothing
-        } else {
-            let last = questionNum
-            // If on the last question, display 'End'
-            if (last === questions.length - 2) {
-                advanceText.current = 'End';
-            }
-            setQuestionNum(last+1)
+    function advanceQ(){
+        let last = questionNum
+        // If on the last question, display 'End'
+        if (last === questions.length - 2) {
+            // advanceText.current = 'End';
+            setEnd(true);
         }
+        setQuestionNum(last+1)
     }
 
     // This is where we'll calculate out the response total
     function calculateResults(){
+        console.log('Calculating')
         const q = questions[questionNum];
         const value = q.getPointValue();
         var response = q.isCorrectAnswer(questionResponse.current);
@@ -66,21 +61,35 @@ function QuestionIterator(props){
             <div>
                 {/* On click, advance question */}
                 <QuizQDisplay qN={questions[questionNum]} result={setEarlyResult}/>
-                <button 
-                    style={{marginLeft: '44%', 
-                            backgroundColor: "#32E0C4", 
-                            borderRadius: 5, 
-                            paddingTop: 10, 
-                            paddingBottom: 10, 
-                            paddingLeft: 20, 
-                            paddingRight: 20, 
-                            border: 0, 
-                            marginTop: 5, 
-                            marginBottom: 10, 
-                            color: "#0D7377"}} 
-                    onClick={() => questionNextSteps()}
-                    >{advanceText.current}
-                </button>
+                {end ? 
+                    (<button
+                        style={{marginLeft: '44%', 
+                                backgroundColor: "#32E0C4", 
+                                borderRadius: 5, 
+                                paddingTop: 10, 
+                                paddingBottom: 10, 
+                                paddingLeft: 20, 
+                                paddingRight: 20, 
+                                border: 0, 
+                                marginTop: 5, 
+                                marginBottom: 10, 
+                                color: "#0D7377"}}
+                        onClick={() => finalStep()}
+                     >End</button>) : 
+                    (<button 
+                        style={{marginLeft: '44%', 
+                                backgroundColor: "#32E0C4", 
+                                borderRadius: 5, 
+                                paddingTop: 10, 
+                                paddingBottom: 10, 
+                                paddingLeft: 20, 
+                                paddingRight: 20, 
+                                border: 0, 
+                                marginTop: 5, 
+                                marginBottom: 10, 
+                                color: "#0D7377"}} 
+                        onClick={() => questionNextSteps()}
+                    > Next </button>) }
             </div>
             {/* Add element which renders when some conditional state is achieved. */}
         </div>
