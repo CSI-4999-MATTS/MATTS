@@ -4,6 +4,8 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 import { Link } from 'react-router-dom';
 import { Button } from '@material-ui/core';
 
+
+
 function LearningStep(props) {
 
     var rank = props.rank;
@@ -44,6 +46,10 @@ function LearningStep(props) {
 
     }));
     const classes = useStyles();
+
+
+    // Fetch articles here, using title as the attribute to sort by
+ 
 
     function percentageCalculator (rank) {
         switch (rank){

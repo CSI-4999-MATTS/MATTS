@@ -31,11 +31,12 @@ function App() {
                     db.collection("Users").doc(uid).set({
                         name: user.displayName,
                         email: user.email,
-                        planningRank: 'Beginner',
-                        designRank: 'Beginner',
-                        implementationRank: 'Beginner',
-                        testingDevRank: 'Beginner',
-                        maintenanceRank: 'Beginner',
+                        photo: user.photoURL,
+                        planningRank: 'Not Assessed',
+                        designRank: 'Not Assessed',
+                        implementationRank: 'Not Assessed',
+                        testingDevRank: 'Not Assessed',
+                        maintenanceRank: 'Not Assessed',
                         })
                     }})
 
