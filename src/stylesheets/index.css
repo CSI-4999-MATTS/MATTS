@@ -13,10 +13,11 @@ code {
 }
 
 div.scrollmenu {
-  background-color: #333;
+  background-color: rgb(177, 177, 174);
   overflow: auto;
   white-space: nowrap;
-  height: 100px;
+  height: auto;
+  text-align: center;
 }
 
 div.scrollmenu a {
@@ -25,8 +26,33 @@ div.scrollmenu a {
   text-align: center;
   padding: 14px;
   text-decoration: none;
+  text-align: center;
+ 
 }
 
-div.scrollmenu a:hover {
-  background-color: #777;
+.ResourceList {
+  display: inline-block;
+  background-color: rgb(241, 236, 236);
+  width: 200px;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;      /* Opera 4-6 */
+  white-space: -o-pre-wrap;    /* Opera 7 */
+  word-wrap: break-word; 
+  margin: 0px 5px 0px 5px;
+  border: 5px solid #0D7377;
+}
+
+.ResourceList a {
+  width: 87%;
+  background-color:#0D7377;
+}
+
+.ResourceList a:hover {
+  background-color: #0D7377;
+  color: #32E0C4
+}
+
+.ResourceList p {
+  padding: 0px 20px 0px 20px;
 }
