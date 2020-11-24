@@ -1,16 +1,14 @@
-import React from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { Link } from 'react-router-dom';
 import { Button } from '@material-ui/core';
 
-
-
 function LearningStep(props) {
 
     var rank = props.rank;
     var title = props.title;
-
+    
     const useStyles = makeStyles((theme) => ({
         progressinfo: {
             color: "#0D7377", 
@@ -47,10 +45,6 @@ function LearningStep(props) {
     }));
     const classes = useStyles();
 
-
-    // Fetch articles here, using title as the attribute to sort by
- 
-
     function percentageCalculator (rank) {
         switch (rank){
             case 'Beginner':
@@ -65,8 +59,9 @@ function LearningStep(props) {
                 return 0;
         }
     };
-
+    
     return (
+        
         <div>
             <p className={classes.progressinfo}>{title} - {rank}</p>
             <LinearProgress variant="determinate" className={classes.progressbar} value={percentageCalculator(rank)} />
