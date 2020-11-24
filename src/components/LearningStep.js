@@ -2,15 +2,40 @@ import React, {useEffect, useState, useRef} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { db } from '../firebase/config';
+import firebase from 'firebase';
 import { SignalCellularConnectedNoInternet0BarSharp } from '@material-ui/icons';
 
+function GetArticles() {
+    const[articles, setArtciles] = useState([])
+
+    useEffect(() => {
+        firebase
+            .firestore()
+            .collection('Articles').where('Track', '==', 'Planning')
+            .onSnapshot((snapshot) => {
+                const newArticles = snapshot.docs.map((doc) => ({
+                    id: doc.id,
+                    ...doc.data()
+                }))
+
+                setArtciles(newArticles)
+            })
+    }, [])
+
+    return articles
+}
+
+//const ArticlesList = () => {
+
+//} 
 
 function LearningStep(props) {
 
     var rank = props.rank;
     var title = props.title;
-    const [count, setCount] = useState(0);
+    //const [count, setCount] = useState([]);
 
+    const articles = GetArticles()
     
     const useStyles = makeStyles((theme) => ({
         progressinfo: {
@@ -32,24 +57,6 @@ function LearningStep(props) {
     }));
     const classes = useStyles();
 
-
-    // Fetch articles here, using title as the attribute to sort by
-    db.collection('Articles')
-    .get()
-    .then( snapshot => {
-        const articles = []
-        snapshot.forEach( doc => {
-            const data = doc.data()
-            console.log(doc.data())
-            articles.push(data)
-            console.log(articles)
-        })
-        this.setCount({ articles: articles})
-        console.log(snapshot)
-    })
-    .catch( error => console.log(error))
-    
-
     function percentageCalculator (rank) {
         switch (rank){
             case 'Beginner':
@@ -70,8 +77,16 @@ function LearningStep(props) {
         <div>
             <p className={classes.progressinfo}>{title} - {rank}</p>
             <LinearProgress variant="determinate" className={classes.progressbar} value={percentageCalculator(rank)} />
-            Hello write here
-            {count}
+            {/*<ul>
+                {articles.map((articles) =>
+                    <li key={articles.id}>
+                        <div>
+                            <a href={articles.URL}>{articles.Title}</a>
+                        </div>
+                    </li>
+                )}
+                </ul>*/}
+            
         </div>
     )
 }
