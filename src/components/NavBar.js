@@ -67,6 +67,11 @@ function NavBar(props) {
     setAnchorEl(null);
   };
 
+  function LaunchPreview(track) {
+    //<Link to = {`/Articles/${track}`}></Link>
+    return;
+  }
+
   const StyledMenu = withStyles({
     paper: {
       border: "5px solid #0D7377",
@@ -134,19 +139,19 @@ function NavBar(props) {
             onClose={handleClose}
           >
             <StyledMenuItem>
-              <ListItemText primary="Primary" />
+              <Link to={`/Articles/Planning`}><ListItemText primary="Planning"/></Link>
             </StyledMenuItem>
             <StyledMenuItem>
-              <ListItemText primary="Design" />
+              <ListItemText primary="Design" onClick={(()=>LaunchPreview("Design"))}/>
             </StyledMenuItem>
             <StyledMenuItem>
-              <ListItemText primary="Implementation" />
+              <ListItemText primary="Implementation" onClick={(()=>LaunchPreview("Implementation"))}/>
             </StyledMenuItem>
             <StyledMenuItem>
-              <ListItemText primary="Testing and Deployment" />
+              <ListItemText primary="Testing and Deployment" onClick={(()=>LaunchPreview("Testing and Deployment"))}/>
             </StyledMenuItem>
             <StyledMenuItem>
-              <ListItemText primary="Maintenance" />
+              <ListItemText primary="Maintenance" onClick={(()=>LaunchPreview("Maintenance"))}/>
             </StyledMenuItem>
           </StyledMenu>
         </div>

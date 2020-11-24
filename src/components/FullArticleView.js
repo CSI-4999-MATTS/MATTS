@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import HomeButton from './HomeButton.js';
 
 
-function DesignPreview(props) {
+function FullArticleView(props) {
 
 const useStyles = makeStyles((theme) => ({
     
@@ -142,4 +142,4 @@ const classes = useStyles();
 
 }
 
-export default DesignPreview;
+export default FullArticleView;
