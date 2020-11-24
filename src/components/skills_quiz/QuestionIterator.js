@@ -6,6 +6,8 @@ function QuestionIterator(props){
     var [questionNum, setQuestionNum] = useState(0);
     var advanceText = useRef('Next');
     var questionResponse = useRef('');
+    var userTotal = useRef(0);
+    var totalTotal = useRef(0);
     var questions = props.questions;
 
     function questionNextSteps(){
@@ -26,9 +28,14 @@ function QuestionIterator(props){
 
     // This is where we'll calculate out the response total
     function calculateResults(){
-        // Check if correct answer
-        var response = questions[questionNum].isCorrectAnswer(questionResponse.current)
+        const q = questions[questionNum];
+        const value = q.getPointValue();
+        var response = q.isCorrectAnswer(questionResponse.current);
         
+        if (response){
+            userTotal.current += value;
+        }
+        totalTotal.current += value;
     }
 
     //Gets result from QuizQDisplay through some funky backpropogation

@@ -1,8 +1,9 @@
 class Question {
-    constructor (q_text, q_options, q_answer) {
+    constructor (q_text, q_options, q_answer, pointValue) {
         this.q_text = q_text;
         this.q_options = q_options;
         this.q_answer = q_answer;
+        this.pointValue = pointValue;
     }
     // Can add in methods here
     toString(){
@@ -18,6 +19,10 @@ class Question {
         }
     }
 
+    getPointValue(){
+        return this.pointValue
+    }
+
     
 }
 
@@ -27,13 +32,14 @@ export var questionConverter = {
         return {
             question_text: question.q_text,
             question_options: question.q_options,
-            question_answer: question.q_answer
+            question_answer: question.q_answer,
+            pointValue: question.pointValue
         }
     },
 
     // Should have to utilize this
     fromFirestore: function(snapshot, options){
         const data = snapshot.data(options);
-        return new Question(data.question_text, data.question_options, data.question_answer);
+        return new Question(data.question_text, data.question_options, data.question_answer, data.pointValue);
     }
 }

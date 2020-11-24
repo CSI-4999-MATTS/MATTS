@@ -6,7 +6,7 @@ import { AppBar, Toolbar, Typography } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import { Link } from "react-router-dom";
 import LogInButton from "../components/LogInButton";
-import LogoutButton from "./LogoutButton.js";
+import LogoutButton from "../components/LogoutButton.js";
 import delve from "../images/Delve.png";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -67,10 +67,6 @@ function NavBar(props) {
     setAnchorEl(null);
   };
 
-  function LaunchPreview(track) {
-    //<Link to = {`/Articles/${track}`}></Link>
-    return;
-  }
 
   const StyledMenu = withStyles({
     paper: {
