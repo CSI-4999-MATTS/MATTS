@@ -6,11 +6,6 @@ import LearnMore from "../components/LearnMore";
 import Dashboard from "../components/Dashboard";
 import Home from "../components/Home";
 import FullArticleView from "./FullArticleView";
-import PlanningPreview from "../components/PlanningPreview";
-import DesignPreview from "../components/DesignPreview";
-import ImplementationPreview from "../components/ImplementationPreview";
-import TestingDevelopmentPreview from "../components/TestingDevelopmentPreview";
-import MaintenancePreview from "../components/MaintenancePreview";
 import QuizStart from "../components/skills_quiz/QuizStart";
 import { db } from '../firebase/config';
 
@@ -55,14 +50,8 @@ function App() {
         <BrowserRouter>
             <Switch>
                 <Route exact path="/" component={Home} />
-                {/* Don't neeed to change this, since it should only be accessable when not logged in */}
                 <Route path="/Login" component={Login} /> 
                 <Route path="/Home" render={(props) => < Home {...props} isLoggedIn={isLoggedIn} />} />
-                {/*<Route path="/PlanningPreview" component={PlanningPreview} />
-                <Route path="/DesignPreview" component={DesignPreview} />
-                <Route path="/ImplementationPreview" component={ImplementationPreview} />
-                <Route path="/TestingDevelopmentPreview" component={TestingDevelopmentPreview} />
-                <Route path="/MaintenancePreview" component={MaintenancePreview} />*/}
                 <Route path="/LearnMore" render={(props) => < LearnMore {...props} isLoggedIn={isLoggedIn} />} />
                 <Route path="/Dashboard" render={(props) => < Dashboard {...props} isLoggedIn={isLoggedIn} user={userId}  />} />
                 <Route path="/Quiz" render={(props) => < QuizStart {...props} isLoggedIn={isLoggedIn} />} />
