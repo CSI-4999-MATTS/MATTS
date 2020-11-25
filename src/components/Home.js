@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import onlineclass from './onlineclass.jpg';
-import onlineclass2 from './onlineclass2.jpg';
+import onlineclass from '../images/onlineclass.jpg';
+import onlineclass2 from '../images/onlineclass2.jpg';
 import { Link } from "react-router-dom";
 import NavBar from './NavBar';
 import DashboardButton from './DashboardButton.js';
@@ -60,7 +60,7 @@ function Home(props) {
             paddingLeft: 8,
             paddingRight: 8,
             border: 0,
-            marginLeft: '45%',
+            marginLeft: '44%',
             marginTop: 5,
             marginBottom: 10,
         },

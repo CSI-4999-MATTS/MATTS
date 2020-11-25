@@ -4,7 +4,10 @@ import { firebaseApp } from '../firebase/config';
 import Login from "../components/Login";
 import LearnMore from "../components/LearnMore";
 import Dashboard from "../components/Dashboard";
-import Home from "../components/Home"
+import Home from "../components/Home";
+import FullArticleView from "./FullArticleView";
+import QuizStart from "../components/skills_quiz/QuizStart";
+import QuizFinish from "../components/skills_quiz/QuizFinish";
 import { db } from '../firebase/config';
 
 
@@ -25,11 +28,12 @@ function App() {
                     db.collection("Users").doc(uid).set({
                         name: user.displayName,
                         email: user.email,
-                        planningRank: 'Beginner',
-                        designRank: 'Beginner',
-                        implementationRank: 'Beginner',
-                        testingDevRank: 'Beginner',
-                        maintenanceRank: 'Beginner',
+                        photo: user.photoURL,
+                        planningRank: 'Not Assessed',
+                        designRank: 'Not Assessed',
+                        implementationRank: 'Not Assessed',
+                        testingDevRank: 'Not Assessed',
+                        maintenanceRank: 'Not Assessed',
                         })
                     }})
 
@@ -47,12 +51,13 @@ function App() {
         <BrowserRouter>
             <Switch>
                 <Route exact path="/" component={Home} />
-                {/* Don't neeed to change this, since it should only be accessable when not logged in */}
                 <Route path="/Login" component={Login} /> 
                 <Route path="/Home" render={(props) => < Home {...props} isLoggedIn={isLoggedIn} />} />
-                
                 <Route path="/LearnMore" render={(props) => < LearnMore {...props} isLoggedIn={isLoggedIn} />} />
                 <Route path="/Dashboard" render={(props) => < Dashboard {...props} isLoggedIn={isLoggedIn} user={userId}  />} />
+                <Route path="/Quiz" render={(props) => < QuizStart {...props} isLoggedIn={isLoggedIn} />} />
+                <Route path="/QuizFinish" render={(props) => < QuizFinish {...props} isLoggedIn={isLoggedIn} />} />
+                <Route path="/Articles/:track" render={(props) => < FullArticleView {...props} isLoggedIn={isLoggedIn} />} />
             </Switch>
         </BrowserRouter>
         

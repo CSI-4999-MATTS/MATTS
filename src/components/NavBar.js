@@ -6,8 +6,8 @@ import { AppBar, Toolbar, Typography } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import { Link } from "react-router-dom";
 import LogInButton from "../components/LogInButton";
-import LogoutButton from "./LogoutButton.js";
-import delve from "./Delve.png";
+import LogoutButton from "../components/LogoutButton.js";
+import delve from "../images/Delve.png";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import { Button } from "@material-ui/core";
@@ -67,11 +67,13 @@ function NavBar(props) {
     setAnchorEl(null);
   };
 
+
   const StyledMenu = withStyles({
     paper: {
       border: "5px solid #0D7377",
-      width: "500px",
+      width: "300px",
       height: "100%",
+      borderRadius: 10,
     },
   })((props) => (
     <Menu
@@ -91,14 +93,14 @@ function NavBar(props) {
 
   const StyledMenuItem = withStyles((theme) => ({
     root: {
-      color: "black",
+      color: "#0D7377",
       textAlign: "center",
       paddingTop: "20px",
       paddingBottom: "20px",
-      "&:focus": {
+      "&:hover": {
         backgroundColor: "#0D7377",
         "& .MuiListItemIcon-root, & .MuiListItemText-primary": {
-          color: "white",
+          color: "#32E0C4",
         },
       },
     },
@@ -133,19 +135,19 @@ function NavBar(props) {
             onClose={handleClose}
           >
             <StyledMenuItem>
-              <ListItemText primary="Planning" />
+              <Link to={`/Articles/Planning`} style={{textDecoration: 'none', color: "#0D7377", marginLeft: '36%'}}><ListItemText primary="Planning"/></Link>
             </StyledMenuItem>
             <StyledMenuItem>
-              <ListItemText primary="Design" />
+              <Link to={`/Articles/Design`} style={{textDecoration: 'none', color: "#0D7377", marginLeft: '39%'}}><ListItemText primary="Design"/></Link>
             </StyledMenuItem>
             <StyledMenuItem>
-              <ListItemText primary="Implementation" />
+              <Link to={`/Articles/Implementation`} style={{textDecoration: 'none', color: "#0D7377", marginLeft: '30%'}}><ListItemText primary="Implementation"/></Link>
             </StyledMenuItem>
             <StyledMenuItem>
-              <ListItemText primary="Testing and Deployment" />
+              <Link to={`/Articles/Test&Deploy`} style={{textDecoration: 'none', color: "#0D7377", marginLeft: '19%'}}><ListItemText primary="Testing and Deployment"/></Link>
             </StyledMenuItem>
             <StyledMenuItem>
-              <ListItemText primary="Maintenance" />
+              <Link to={`/Articles/Maintenance`} style={{textDecoration: 'none', color: "#0D7377", marginLeft: '33%'}}><ListItemText primary="Maintenance"/></Link>
             </StyledMenuItem>
           </StyledMenu>
         </div>

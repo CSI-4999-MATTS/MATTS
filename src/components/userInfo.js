@@ -1,9 +1,10 @@
-import React from 'react'
+import React, {useEffect, useState, useRef} from 'react'
 import '../stylesheets/App.css';
 import { makeStyles } from '@material-ui/core/styles';
-import defaultprofile from './defaultprofile.png';
+import defaultprofile from '../images/defaultprofile.png';
 import { Link } from "react-router-dom";
 import LearningStep from '../components/LearningStep';
+import { db } from '../firebase/config';
 
 function UserInfo(props) {
 
@@ -16,6 +17,28 @@ function UserInfo(props) {
     var testRank = props.user.testingDevRank; 
     var maintRank = props.user.maintenanceRank;
 
+//    const articles = GetArticles(props)
+//
+//    function GetArticles(props) {
+//        var planRank = props.user.planningRank;
+//    
+//        const[articles, setArtciles] = useState([])
+//    
+//        // Once you get test working, you'll want to move this to LearningStep
+//        useEffect(() => {
+//                db.collection('Articles').where('Rank', '==', planRank)
+//                .onSnapshot((snapshot) => {
+//                    const newArticles = snapshot.docs.map((doc) => ({
+//                        id: doc.id,
+//                        ...doc.data()
+//                    }))
+//    
+//                    setArtciles(newArticles)
+//                })
+//        }, [planRank])
+//    
+//        return articles
+//    }
 
     const useStyles = makeStyles((theme) => ({
         
@@ -23,7 +46,7 @@ function UserInfo(props) {
             position: 'absolute',
             width: 125,
             borderTopLeftRadius: 10,
-            borderBottomRightRadius: 10,
+            borderBottomLeftRadius: 10,
             borderRight: '2px solid #0D7377',
             borderBottom: '2px solid #0D7377',
             backgroundColor: "#0D7377",
@@ -56,7 +79,7 @@ function UserInfo(props) {
             marginLeft: '10%',
             border: '2px solid #0D7377',
             borderRadius: 10,
-                    
+            
         },
         
         profilename: {
@@ -71,6 +94,7 @@ function UserInfo(props) {
         profileinfo: {
             marginLeft: 132,
             color: "#0D7377",
+            height: 43.85,
         },
         
         continuetext: {
@@ -130,7 +154,6 @@ function UserInfo(props) {
                 <img className={classes.photo} src={defaultprofile} alt={"UserPhoto"}/>
                 <h1 className={classes.profilename} >{userName}</h1>
                 <h4 className={classes.profileinfo}>Email: {userEmail}</h4>
-                <h4 className={classes.profileinfo}>Rank: "Rank"</h4>
             </div>
         
             <div className={classes.page}>
@@ -141,12 +164,14 @@ function UserInfo(props) {
                 <LearningStep rank={testRank} title={'Testing & Deployment'} />
                 <LearningStep rank={maintRank} title={'Maintenance'} />
             </div>
+
+            
             
             <div className={classes.page}>
-                <p className={classes.continuetext}>Want to continue where you left off, click below to continue!</p> 
+                <p className={classes.continuetext}>Want to learn about how we teach and out methods, click below to find out!</p> 
                     
                     <button className={classes.buttons}>
-                        <Link to="/LearnMore" className={classes.buttonlinks}>Continue</Link>
+                        <Link to="/LearnMore" className={classes.buttonlinks}>Learn More</Link>
                     </button>   
             </div>
         </div>
