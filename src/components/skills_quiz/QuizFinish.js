@@ -81,10 +81,12 @@ function QuizFinish(props){
         <NavBar loggedIn={props.isLoggedIn}/>
         
     
-        <div style={{border: '2px solid #0D7377', width: '40%', marginLeft: '30%', marginRight: '30%', borderRadius: 10, backgroundColor: "#0D7377", marginTop: 200, paddingTop: 20, paddingBottom: 25}}>
+        <div style={{border: '2px solid #0D7377', width: '40%', marginLeft: '32%', borderRadius: 10, backgroundColor: "#0D7377", marginTop: 200, paddingTop: 20, paddingBottom: 25}}>
             <h1 style={{color: "#EEEEEE", textAlign: 'center'}}>Results</h1>
-            <h2>{newRank}</h2>
-            {sent ? <DashboardButton /> : <br/>}
+            <h2 style={{textAlign: 'center', color: "#32E0C4"}}>Your skill: {newRank}!</h2>
+            <button style={{backgroundColor: "#32E0C4", borderRadius: 10, padding: 10, paddingTop: 8, paddingBottom: 8, marginLeft: '35%', borderColor: "#32E0C4"}}>
+                <Link to="/Dashboard" style={{textDecoration: 'none', color: "#0D7377"}}>Go to Dashboard</Link>
+            </button>
         </div>
     
         <div style={{textAlign:'center', height: 75, opacity: .3, fontSize: 10, marginTop: 400, bottom: 0, display: 'block', width: '100%',}}>

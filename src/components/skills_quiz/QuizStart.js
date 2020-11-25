@@ -75,7 +75,7 @@ class QuizStart extends React.Component {
             display = <QuestionIterator questions={this.state.questions} track={this.state.track} />
         } else {
             display = <button onClick={this.handleClick} 
-                        style={{marginLeft: '44%', backgroundColor: "#32E0C4",
+                        style={{marginLeft: '39%', backgroundColor: "#32E0C4",
                                 borderRadius: 5, paddingTop: 10, paddingBottom: 10, paddingLeft: 20, paddingRight: 20, border: 0, marginTop: 5, marginBottom: 10, color: "#0D7377"}}
                         >Start</button>
         }
@@ -85,7 +85,7 @@ class QuizStart extends React.Component {
                 <NavBar loggedIn={this.props.isLoggedIn}/>
                 
             
-                <div style={{border: '2px solid #0D7377', width: '40%', marginLeft: '30%', marginRight: '30%', borderRadius: 10, backgroundColor: "#0D7377", marginTop: 200, paddingTop: 20, paddingBottom: 25}}>
+                <div style={{border: '2px solid #0D7377', width: '40%', marginLeft: '35%', borderRadius: 10, backgroundColor: "#0D7377", marginTop: 200, paddingTop: 20, paddingBottom: 25}}>
                     <h1 style={{color: "#EEEEEE", textAlign: 'center'}}>{this.state.track} Quiz</h1>
                     {display}
                 </div>

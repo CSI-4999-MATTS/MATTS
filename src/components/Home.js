@@ -60,7 +60,7 @@ function Home(props) {
             paddingLeft: 8,
             paddingRight: 8,
             border: 0,
-            marginLeft: '45%',
+            marginLeft: '44%',
             marginTop: 5,
             marginBottom: 10,
         },

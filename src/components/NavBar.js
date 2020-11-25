@@ -135,19 +135,19 @@ function NavBar(props) {
             onClose={handleClose}
           >
             <StyledMenuItem>
-              <Link to={`/Articles/Planning`}><ListItemText primary="Planning"/></Link>
+              <Link to={`/Articles/Planning`} style={{textDecoration: 'none', color: "#0D7377", marginLeft: '36%'}}><ListItemText primary="Planning"/></Link>
             </StyledMenuItem>
             <StyledMenuItem>
-              <Link to={`/Articles/Design`}><ListItemText primary="Design"/></Link>
+              <Link to={`/Articles/Design`} style={{textDecoration: 'none', color: "#0D7377", marginLeft: '39%'}}><ListItemText primary="Design"/></Link>
             </StyledMenuItem>
             <StyledMenuItem>
-              <Link to={`/Articles/Implementation`}><ListItemText primary="Implementation"/></Link>
+              <Link to={`/Articles/Implementation`} style={{textDecoration: 'none', color: "#0D7377", marginLeft: '30%'}}><ListItemText primary="Implementation"/></Link>
             </StyledMenuItem>
             <StyledMenuItem>
-              <Link to={`/Articles/Test&Deploy`}><ListItemText primary="Testing and Deployment"/></Link>
+              <Link to={`/Articles/Test&Deploy`} style={{textDecoration: 'none', color: "#0D7377", marginLeft: '19%'}}><ListItemText primary="Testing and Deployment"/></Link>
             </StyledMenuItem>
             <StyledMenuItem>
-              <Link to={`/Articles/Maintenance`}><ListItemText primary="Maintenance"/></Link>
+              <Link to={`/Articles/Maintenance`} style={{textDecoration: 'none', color: "#0D7377", marginLeft: '33%'}}><ListItemText primary="Maintenance"/></Link>
             </StyledMenuItem>
           </StyledMenu>
         </div>
