@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { Link } from 'react-router-dom';
@@ -11,7 +11,7 @@ function LearningStep(props) {
     var title = props.title;
     var track = props.title;
 
-    if (track == "Testing & Deployment") {
+    if (track === "Testing & Deployment") {
         track = "Test&Deploy";
     }
 
@@ -20,7 +20,7 @@ function LearningStep(props) {
     function GetArticles(props) {
         //var planRank = props.user.planningRank;
     
-        const[articles, setArtciles] = useState([])
+        const [articles, setArticles] = useState([])
     
         // Once you get test working, you'll want to move this to LearningStep
         useEffect(() => {
@@ -31,9 +31,9 @@ function LearningStep(props) {
                         ...doc.data()
                     }))
     
-                    setArtciles(newArticles)
+                    setArticles(newArticles)
                 })
-        }, [title])
+        })
     
         return articles
     }
