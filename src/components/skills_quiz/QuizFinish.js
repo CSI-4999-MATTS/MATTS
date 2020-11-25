@@ -43,6 +43,7 @@ function QuizFinish(props){
 
     function computeRankTrack(track){
         let rankTrack;
+        console.log('rank track: ', track);
         switch (track) {
             case 'Planning':
                 rankTrack = 'planningRank';
@@ -53,15 +54,16 @@ function QuizFinish(props){
             case 'Implementation':
                 rankTrack = 'implementationRank';
                 break;
-            case 'Test_Deploy':
+            case 'Testing & Deployment':
                 rankTrack = 'testingDevRank';
                 break;
             case 'Maintenance':
                 rankTrack = 'maintenanceRank';
                 break; 
             default:
-                rankTrack = 'Planning'
+                rankTrack = 'testingDevRank'
         }
+        console.log('Rank track: ', rankTrack)
         return rankTrack;
     }
 
