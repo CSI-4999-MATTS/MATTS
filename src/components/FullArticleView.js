@@ -2,8 +2,6 @@ import React from 'react';
 import '../stylesheets/App.css';
 import { makeStyles } from '@material-ui/core/styles';
 import NavBar from "./NavBar";
-import { Link } from "react-router-dom";
-import HomeButton from './HomeButton.js';
 
 
 function FullArticleView(props, {match, location}) {

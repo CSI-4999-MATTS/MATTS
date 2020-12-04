@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom'
 import NavBar from '../NavBar';
 import firebase from 'firebase';
 import {db} from '../../firebase/config';
-import DashboardButton from '../DashboardButton';
 
 function QuizFinish(props){
 
