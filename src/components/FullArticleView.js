@@ -1,9 +1,11 @@
-import React from 'react';
+
+import React, {useState, useEffect} from 'react';
 import '../stylesheets/App.css';
 import { makeStyles } from '@material-ui/core/styles';
 import NavBar from "./NavBar";
 import { Link } from "react-router-dom";
 import HomeButton from './HomeButton.js';
+import { db } from '../firebase/config';
 
 
 function FullArticleView(props, {match, location}) {
@@ -109,7 +111,7 @@ const classes = useStyles();
         
         <div className={classes.page}>
             <h2 className={classes.header}>Beginner</h2>
-            <p className={classes.websiteinfo}>Resources</p>
+            
             
         </div>
         
