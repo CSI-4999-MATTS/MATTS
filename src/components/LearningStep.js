@@ -33,7 +33,7 @@ function LearningStep(props) {
     
                     setArticles(newArticles)
                 })
-        })
+        }, [props.articles])
     
         return articles
     }
