@@ -3,10 +3,7 @@ import React, {useState, useEffect} from 'react';
 import '../stylesheets/App.css';
 import { makeStyles } from '@material-ui/core/styles';
 import NavBar from "./NavBar";
-import { Link } from "react-router-dom";
-import HomeButton from './HomeButton.js';
 import { db } from '../firebase/config';
-import GetArticles from './LearningStep.js';
 
 
 function FullArticleView(props, {match, location}) {
@@ -30,7 +27,7 @@ function FullArticleView(props, {match, location}) {
     
                     setArticles(newArticles)
                 })
-        }, [props])
+        }, [props.match.params.track])
     
         return articles
     }
@@ -49,7 +46,7 @@ function FullArticleView(props, {match, location}) {
     
                     setArticles(newArticles)
                 })
-        }, [])
+        }, [props.match.params.track])
     
         return articles
     }
@@ -68,7 +65,7 @@ function FullArticleView(props, {match, location}) {
     
                     setArticles(newArticles)
                 })
-        }, [])
+        }, [props.match.params.track])
     
         return articles
     }
@@ -87,7 +84,7 @@ function FullArticleView(props, {match, location}) {
     
                     setArticles(newArticles)
                 })
-        }, [])
+        }, [props.match.params.track])
     
         return articles
     }
@@ -196,7 +193,7 @@ const classes = useStyles();
             <ul>
                 {articles.map((articles) =>
                 <li key={articles.id}>
-                    <a href={articles.URL} target="_blank">{articles.Title}</a>
+                    <a href={articles.URL} target="_blank" rel="noopener noreferrer">{articles.Title}</a>
                     <p>{articles.Summary}</p>
                 </li>
                 )}
@@ -209,7 +206,7 @@ const classes = useStyles();
             <ul>
                 {IntermediateArticles.map((IntermediateArticles) =>
                 <li key={IntermediateArticles.id}>
-                    <a href={IntermediateArticles.URL} target="_blank">{IntermediateArticles.Title}</a>
+                    <a href={IntermediateArticles.URL} target="_blank" rel="noopener noreferrer">{IntermediateArticles.Title}</a>
                     <p>{IntermediateArticles.Summary}</p>
                 </li>
                 )}
@@ -222,7 +219,7 @@ const classes = useStyles();
             <ul>
                 {AdvancedArticles.map((AdvancedArticles) =>
                 <li key={AdvancedArticles.id}>
-                    <a href={AdvancedArticles.URL} target="_blank">{AdvancedArticles.Title}</a>
+                    <a href={AdvancedArticles.URL} target="_blank" rel="noopener noreferrer">{AdvancedArticles.Title}</a>
                     <p>{AdvancedArticles.Summary}</p>
                 </li>
                 )}
@@ -235,7 +232,7 @@ const classes = useStyles();
             <ul>
                 {ProfessionalArticles.map((ProfessionalArticles) =>
                 <li key={ProfessionalArticles.id}>
-                    <a href={ProfessionalArticles.URL} target="_blank">{ProfessionalArticles.Title}</a>
+                    <a href={ProfessionalArticles.URL} target="_blank" rel="noopener noreferrer"v>{ProfessionalArticles.Title}</a>
                     <p>{ProfessionalArticles.Summary}</p>
                 </li>
                 )}
