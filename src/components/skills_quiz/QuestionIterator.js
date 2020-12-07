@@ -46,10 +46,8 @@ function QuestionIterator(props){
 
         if (response){
             userTotal.current += value;
-            console.log('User: ', userTotal.current)
         }
         totalTotal.current += value;
-        console.log('Total:' , totalTotal.current)
     }
 
     //Gets result from QuizQDisplay through some funky backpropogation

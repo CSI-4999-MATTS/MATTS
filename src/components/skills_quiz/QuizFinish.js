@@ -42,7 +42,6 @@ function QuizFinish(props){
 
     function computeRankTrack(track){
         let rankTrack;
-        console.log('rank track: ', track);
         switch (track) {
             case 'Planning':
                 rankTrack = 'planningRank';
@@ -62,12 +61,12 @@ function QuizFinish(props){
             default:
                 rankTrack = 'testingDevRank'
         }
-        console.log('Rank track: ', rankTrack)
         return rankTrack;
     }
 
     function sendToStore(user, newRank, rankTrack){
         var userDoc = db.collection('Users').doc(user);
+        console.log('WEEEEEEEE');
         return userDoc.update({
             [rankTrack]: newRank
         }).then(function() {
