@@ -3,7 +3,6 @@ import React from 'react';
 function QuizQDisplay(props) {
 
     var help = {...props.qN}
-    console.log(help);
 
     function passResult(value){
         props.result(value);

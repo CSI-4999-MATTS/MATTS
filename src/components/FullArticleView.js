@@ -1,12 +1,93 @@
-import React from 'react';
+
+import React, {useState, useEffect} from 'react';
 import '../stylesheets/App.css';
 import { makeStyles } from '@material-ui/core/styles';
 import NavBar from "./NavBar";
-import { Link } from "react-router-dom";
-import HomeButton from './HomeButton.js';
+import { db } from '../firebase/config';
 
 
 function FullArticleView(props, {match, location}) {
+
+    const articles = GetArticles(props)
+    const IntermediateArticles = GetIntermediateArticles(props)
+    const AdvancedArticles = GetAdvancedArticles(props)
+    const ProfessionalArticles = GetProfessionalArticles(props)
+
+    function GetArticles(props) {
+    
+        const [articles, setArticles] = useState([])
+    
+        useEffect(() => {
+                db.collection('Articles').where('Track', '==', props.match.params.track).where('Rank', '==', "Beginner")
+                .onSnapshot((snapshot) => {
+                    const newArticles = snapshot.docs.map((doc) => ({
+                        id: doc.id,
+                        ...doc.data()
+                    }))
+    
+                    setArticles(newArticles)
+                })
+        }, [props.match.params.track])
+    
+        return articles
+    }
+
+    function GetIntermediateArticles(props) {
+    
+        const [articles, setArticles] = useState([])
+    
+        useEffect(() => {
+                db.collection('Articles').where('Track', '==', props.match.params.track).where('Rank', '==', "Intermediate")
+                .onSnapshot((snapshot) => {
+                    const newArticles = snapshot.docs.map((doc) => ({
+                        id: doc.id,
+                        ...doc.data()
+                    }))
+    
+                    setArticles(newArticles)
+                })
+        }, [props.match.params.track])
+    
+        return articles
+    }
+
+    function GetAdvancedArticles(props) {
+    
+        const [articles, setArticles] = useState([])
+    
+        useEffect(() => {
+                db.collection('Articles').where('Track', '==', props.match.params.track).where('Rank', '==', "Advanced")
+                .onSnapshot((snapshot) => {
+                    const newArticles = snapshot.docs.map((doc) => ({
+                        id: doc.id,
+                        ...doc.data()
+                    }))
+    
+                    setArticles(newArticles)
+                })
+        }, [props.match.params.track])
+    
+        return articles
+    }
+
+    function GetProfessionalArticles(props) {
+    
+        const [articles, setArticles] = useState([])
+    
+        useEffect(() => {
+                db.collection('Articles').where('Track', '==', props.match.params.track).where('Rank', '==', "Professional")
+                .onSnapshot((snapshot) => {
+                    const newArticles = snapshot.docs.map((doc) => ({
+                        id: doc.id,
+                        ...doc.data()
+                    }))
+    
+                    setArticles(newArticles)
+                })
+        }, [props.match.params.track])
+    
+        return articles
+    }
 
 const useStyles = makeStyles((theme) => ({
     
@@ -109,25 +190,53 @@ const classes = useStyles();
         
         <div className={classes.page}>
             <h2 className={classes.header}>Beginner</h2>
-            <p className={classes.websiteinfo}>Resources</p>
+            <ul>
+                {articles.map((articles) =>
+                <li key={articles.id}>
+                    <a href={articles.URL} target="_blank" rel="noopener noreferrer">{articles.Title}</a>
+                    <p>{articles.Summary}</p>
+                </li>
+                )}
+            </ul>
             
         </div>
         
         <div className={classes.page}>
             <h2 className={classes.header}>Intermediate</h2>
-            <p className={classes.websiteinfo}>Resources</p>
+            <ul>
+                {IntermediateArticles.map((IntermediateArticles) =>
+                <li key={IntermediateArticles.id}>
+                    <a href={IntermediateArticles.URL} target="_blank" rel="noopener noreferrer">{IntermediateArticles.Title}</a>
+                    <p>{IntermediateArticles.Summary}</p>
+                </li>
+                )}
+            </ul>
             
         </div>
         
         <div className={classes.page}>
             <h2 className={classes.header}>Advanced</h2>
-            <p className={classes.websiteinfo}>Resources</p>
+            <ul>
+                {AdvancedArticles.map((AdvancedArticles) =>
+                <li key={AdvancedArticles.id}>
+                    <a href={AdvancedArticles.URL} target="_blank" rel="noopener noreferrer">{AdvancedArticles.Title}</a>
+                    <p>{AdvancedArticles.Summary}</p>
+                </li>
+                )}
+            </ul>
             
         </div>
         
         <div className={classes.page}>
             <h2 className={classes.header}>Professional</h2>
-            <p className={classes.websiteinfo}>Resources</p>
+            <ul>
+                {ProfessionalArticles.map((ProfessionalArticles) =>
+                <li key={ProfessionalArticles.id}>
+                    <a href={ProfessionalArticles.URL} target="_blank" rel="noopener noreferrer"v>{ProfessionalArticles.Title}</a>
+                    <p>{ProfessionalArticles.Summary}</p>
+                </li>
+                )}
+            </ul>
             
         </div>
         

@@ -33,7 +33,7 @@ function LearningStep(props) {
     
                     setArticles(newArticles)
                 })
-        })
+        }, [props.articles])
     
         return articles
     }
@@ -103,7 +103,7 @@ function LearningStep(props) {
             <ul>
                 {articles.map((articles) =>
                 <li class="ResourceList" key={articles.id}>
-                    <a href={articles.URL} target="_blank">{articles.Title}</a>
+                    <a href={articles.URL} target="_blank" rel="noopener noreferrer">{articles.Title}</a>
                     <p>{articles.Summary}</p>
                 </li>
                 )}

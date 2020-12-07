@@ -98,13 +98,15 @@ const classes = useStyles();
         
         <div className={classes.page}>
             <h2 className={classes.header}>What We Teach</h2>
-            <p className={classes.websiteinfo}>Our recommendations are based on gathering resources from all over the web and categorizing them based on what they can teach you. [Add detailed description of algorithm here]</p>
+            <p className={classes.websiteinfo}>Our recommendations are based on gathering resources from all over the web and categorizing them based on what they can teach you. After having your skills
+            measured by our system, you'll have articles recommended to help you improve.</p>
             
         </div>
         
         <div className={classes.page}>
             <h2 className={classes.header}>Benefits Of Using Our Website</h2>
-            <p className={classes.websiteinfo}>With each article you read, we keep track of how you’re doing by [Insert detailed description of achievement system]</p>
+            <p className={classes.websiteinfo}>With each article you read, we keep track of how you’re doing by. You can take quizzes again and again in order to test your improvements, then continue using your 
+            recommendations to improve. You'll avoid wasting hours trying to find resources that teach you what you actually need to know.</p>
             
         </div>
         
